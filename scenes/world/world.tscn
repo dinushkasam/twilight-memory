@@ -1,0 +1,44 @@
+[gd_scene load_steps=8 format=3 uid="uid://bcfjxy7im26cv"]
+
+[ext_resource type="Texture2D" uid="uid://c1vo67cfhkl1o" path="res://assets/sprites/tiles/grass.png" id="1_dphjl"]
+[ext_resource type="Script" uid="uid://cj8bdaiy0rtyu" path="res://scripts/world/world.gd" id="2_sl2e5"]
+[ext_resource type="Texture2D" uid="uid://glw78y1nmgmm" path="res://assets/sprites/tiles/highlight-grass.png" id="3_1fp7r"]
+[ext_resource type="PackedScene" uid="uid://cdwo6vwajx1tj" path="res://scenes/player/player.tscn" id="4_6m72w"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sl2e5"]
+resource_name = "Grass"
+texture = ExtResource("1_dphjl")
+texture_region_size = Vector2i(64, 32)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6m72w"]
+resource_name = "grass-highlight"
+texture = ExtResource("3_1fp7r")
+texture_region_size = Vector2i(64, 32)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_1fp7r"]
+tile_shape = 1
+tile_layout = 5
+tile_size = Vector2i(64, 32)
+sources/0 = SubResource("TileSetAtlasSource_sl2e5")
+sources/1 = SubResource("TileSetAtlasSource_6m72w")
+
+[node name="World" type="Node2D"]
+script = ExtResource("2_sl2e5")
+
+[node name="GroundTileMapLayer" type="TileMapLayer" parent="."]
+y_sort_enabled = true
+texture_filter = 1
+tile_set = SubResource("TileSet_1fp7r")
+
+[node name="GroundHighlightTileMapLayer" type="TileMapLayer" parent="."]
+y_sort_enabled = true
+texture_filter = 1
+tile_set = SubResource("TileSet_1fp7r")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.2, 1.2)
+position_smoothing_enabled = true
+
+[node name="Player" parent="." instance=ExtResource("4_6m72w")]
