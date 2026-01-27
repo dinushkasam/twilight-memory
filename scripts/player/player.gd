@@ -1,8 +1,10 @@
 extends CharacterBody2D
 
 @export var move_speed := 120.0
+@export var acceleration := 1.0
 
 var grid_position: Vector2i
+var standing_on_ground: bool
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
@@ -34,8 +36,8 @@ func update_grid_position():
 	var world := get_parent().get_parent().get_node("GroundTileMapLayer") as TileMapLayer
 	var local_position := world.to_local(global_position)
 	grid_position = world.local_to_map(local_position)
-	
-	
+
+
 func update_animation():
 	if velocity.length() > 0:
 		pass # play walk animation

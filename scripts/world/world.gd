@@ -4,14 +4,18 @@ extends Node2D
 @onready var highlight: TileMapLayer = $GroundHighlightTileMapLayer
 
 const BASE_BLOCKS_ID = 2
-const GRASS_BASE_ATLAS_COORDS = Vector2i(0, 0)
-const HIGHLIGHT_ATLAS_COORDS = Vector2i(6, 0)
+
+const GRASS_BASE_ATLUS = Vector2i(0, 0)
+const HIGHLIGHT_ATLUS = Vector2i(6, 0)
+const SOIL_ATLUS = Vector2i(3, 0)
+const BOUNDARY_ATLUS = Vector2i(0, 1)
 
 var hovered_cell: Vector2i = Vector2i(-999, -999)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	generate_test_map()
+	generate_boundaries()
 
 func _process(_delta: float) -> void:
 	update_hovered_tile()
@@ -25,10 +29,26 @@ func generate_test_map():
 	for x in range(size):
 		for y in range(size):
 			ground.set_cell(
-				Vector2i(x - floor(size / 2), y - floor(size / 2)),
+				Vector2i(x - floor(size / 2) - 1, y - floor(size / 2)),
 				BASE_BLOCKS_ID,
-				GRASS_BASE_ATLAS_COORDS
+				GRASS_BASE_ATLUS
 			)
+
+
+func generate_boundaries():
+	const offsets = [
+		Vector2i(0, -1),
+		Vector2i(0, 1),
+		Vector2i(-1, 0),
+		Vector2i(1, 0)
+	]
+	var used = ground.get_used_cells()
+	
+	for tile in used:
+		for offset in offsets:
+			var current_tile = tile + offset
+			if ground.get_cell_source_id(current_tile) == -1:
+				ground.set_cell(current_tile, BASE_BLOCKS_ID, BOUNDARY_ATLUS)
 
 
 func update_hovered_tile():
@@ -46,7 +66,7 @@ func update_hovered_tile():
 		highlight.set_cell(
 			cell,
 			BASE_BLOCKS_ID,
-			HIGHLIGHT_ATLAS_COORDS
+			HIGHLIGHT_ATLUS
 		)
 		hovered_cell = cell
 
