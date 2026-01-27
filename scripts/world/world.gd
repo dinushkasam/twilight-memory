@@ -2,7 +2,10 @@ extends Node2D
 
 @onready var ground: TileMapLayer = $GroundTileMapLayer
 @onready var highlight: TileMapLayer = $GroundHighlightTileMapLayer
-@onready var player := $Player
+
+const BASE_BLOCKS_ID = 2
+const GRASS_BASE_ATLAS_COORDS = Vector2i(0, 0)
+const HIGHLIGHT_ATLAS_COORDS = Vector2i(6, 0)
 
 var hovered_cell: Vector2i = Vector2i(-999, -999)
 
@@ -18,13 +21,13 @@ func _input(event: InputEvent) -> void:
 
 
 func generate_test_map():
-	var size := 10
+	var size := 10.0
 	for x in range(size):
 		for y in range(size):
 			ground.set_cell(
-				Vector2i(x - (size / 2), y - (size / 2)),
-				0,
-				Vector2i(0, 0)
+				Vector2i(x - floor(size / 2), y - floor(size / 2)),
+				BASE_BLOCKS_ID,
+				GRASS_BASE_ATLAS_COORDS
 			)
 
 
@@ -42,8 +45,8 @@ func update_hovered_tile():
 	if ground.get_cell_source_id(cell) != -1:
 		highlight.set_cell(
 			cell,
-			1,
-			Vector2i(0, 0)
+			BASE_BLOCKS_ID,
+			HIGHLIGHT_ATLAS_COORDS
 		)
 		hovered_cell = cell
 

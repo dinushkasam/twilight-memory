@@ -8,7 +8,7 @@ var grid_position: Vector2i
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	pass # Replace with function body.dd
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -31,7 +31,7 @@ func handle_movement():
 
 
 func update_grid_position():
-	var world := get_parent().get_node("GroundTileMapLayer") as TileMapLayer
+	var world := get_parent().get_parent().get_node("GroundTileMapLayer") as TileMapLayer
 	var local_position := world.to_local(global_position)
 	grid_position = world.local_to_map(local_position)
 	

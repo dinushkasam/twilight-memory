@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://bcfjxy7im26cv"]
+[gd_scene load_steps=10 format=3 uid="uid://bcfjxy7im26cv"]
 
 [ext_resource type="Texture2D" uid="uid://c1vo67cfhkl1o" path="res://assets/sprites/tiles/grass.png" id="1_dphjl"]
 [ext_resource type="Script" uid="uid://cj8bdaiy0rtyu" path="res://scripts/world/world.gd" id="2_sl2e5"]
 [ext_resource type="Texture2D" uid="uid://glw78y1nmgmm" path="res://assets/sprites/tiles/highlight-grass.png" id="3_1fp7r"]
 [ext_resource type="PackedScene" uid="uid://cdwo6vwajx1tj" path="res://scenes/player/player.tscn" id="4_6m72w"]
+[ext_resource type="Texture2D" uid="uid://rw7pybpuxyr7" path="res://assets/sprites/tiles/Base-blocks.png" id="4_v5dby"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sl2e5"]
 resource_name = "Grass"
@@ -17,12 +18,35 @@ texture = ExtResource("3_1fp7r")
 texture_region_size = Vector2i(64, 32)
 0:0/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t5ptc"]
+resource_name = "base-blocks"
+texture = ExtResource("4_v5dby")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, -16)
+1:0/0 = 0
+1:0/0/texture_origin = Vector2i(0, -16)
+2:0/0 = 0
+2:0/0/texture_origin = Vector2i(0, -16)
+3:0/0 = 0
+3:0/0/texture_origin = Vector2i(0, -16)
+4:0/0 = 0
+4:0/0/texture_origin = Vector2i(0, -16)
+5:0/0 = 0
+5:0/0/texture_origin = Vector2i(0, -16)
+6:0/0 = 0
+6:0/0/texture_origin = Vector2i(0, -16)
+7:0/0 = 0
+7:0/0/texture_origin = Vector2i(0, -16)
+
 [sub_resource type="TileSet" id="TileSet_1fp7r"]
 tile_shape = 1
 tile_layout = 5
 tile_size = Vector2i(64, 32)
+physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_sl2e5")
 sources/1 = SubResource("TileSetAtlasSource_6m72w")
+sources/2 = SubResource("TileSetAtlasSource_t5ptc")
 
 [node name="World" type="Node2D"]
 script = ExtResource("2_sl2e5")
@@ -41,4 +65,7 @@ tile_set = SubResource("TileSet_1fp7r")
 zoom = Vector2(1.2, 1.2)
 position_smoothing_enabled = true
 
-[node name="Player" parent="." instance=ExtResource("4_6m72w")]
+[node name="Ysort" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Player" parent="Ysort" instance=ExtResource("4_6m72w")]
