@@ -26,10 +26,10 @@ func _input(event: InputEvent) -> void:
 
 func generate_test_map():
 	var size := 10.0
-	for x in range(size):
-		for y in range(size):
+	for x in range(-size/2, size/2):
+		for y in range(-size/2, size/2):
 			ground.set_cell(
-				Vector2i(x - floor(size / 2) - 1, y - floor(size / 2)),
+				Vector2i(x, y),
 				BASE_BLOCKS_ID,
 				GRASS_BASE_ATLUS
 			)
