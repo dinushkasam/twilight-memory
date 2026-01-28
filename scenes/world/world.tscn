@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bcfjxy7im26cv"]
+[gd_scene format=3 uid="uid://bcfjxy7im26cv"]
 
 [ext_resource type="Script" uid="uid://cj8bdaiy0rtyu" path="res://scripts/world/world.gd" id="2_sl2e5"]
 [ext_resource type="PackedScene" uid="uid://cdwo6vwajx1tj" path="res://scenes/player/player.tscn" id="4_6m72w"]
@@ -36,26 +36,26 @@ tile_size = Vector2i(64, 32)
 physics_layer_0/collision_layer = 1
 sources/2 = SubResource("TileSetAtlasSource_t5ptc")
 
-[node name="World" type="Node2D"]
+[node name="World" type="Node2D" unique_id=715088121]
 y_sort_enabled = true
 script = ExtResource("2_sl2e5")
 
-[node name="GroundTileMapLayer" type="TileMapLayer" parent="."]
+[node name="GroundTileMapLayer" type="TileMapLayer" parent="." unique_id=1215690059]
 y_sort_enabled = true
 texture_filter = 1
 tile_set = SubResource("TileSet_1fp7r")
 
-[node name="GroundHighlightTileMapLayer" type="TileMapLayer" parent="."]
+[node name="GroundHighlightTileMapLayer" type="TileMapLayer" parent="." unique_id=564940117]
 y_sort_enabled = true
 texture_filter = 1
 tile_set = SubResource("TileSet_1fp7r")
 
-[node name="Ysort" type="Node2D" parent="."]
+[node name="Ysort" type="Node2D" parent="." unique_id=342279187]
 y_sort_enabled = true
 
-[node name="Player" parent="Ysort" instance=ExtResource("4_6m72w")]
+[node name="Player" parent="Ysort" unique_id=903636811 instance=ExtResource("4_6m72w")]
 
-[node name="Camera2D" type="Camera2D" parent="Ysort/Player"]
+[node name="Camera2D" type="Camera2D" parent="Ysort/Player" unique_id=936349371]
 zoom = Vector2(1.2, 1.2)
 process_callback = 0
 position_smoothing_enabled = true

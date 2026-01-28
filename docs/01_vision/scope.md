@@ -10,6 +10,7 @@ Must-have mechanics:
 - Crafting
 - Exploring
 - Combat
+- Seasons
 
 Optional mechanics:
 - Fishing
@@ -19,6 +20,7 @@ Optional mechanics:
 - Questing
 - Trading
 - Cooking
+- Status effects (Cold, Hungry, Tired)
 
 ## World
 
