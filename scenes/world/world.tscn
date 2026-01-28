@@ -4,6 +4,16 @@
 [ext_resource type="PackedScene" uid="uid://cdwo6vwajx1tj" path="res://scenes/player/player.tscn" id="4_6m72w"]
 [ext_resource type="Texture2D" uid="uid://rw7pybpuxyr7" path="res://assets/sprites/tiles/Base-blocks.png" id="4_v5dby"]
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_1fp7r"]
+noise_type = 3
+seed = 4
+frequency = 0.0514
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_6m72w"]
+width = 64
+height = 64
+noise = SubResource("FastNoiseLite_1fp7r")
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t5ptc"]
 resource_name = "base-blocks"
 texture = ExtResource("4_v5dby")
@@ -39,6 +49,7 @@ sources/2 = SubResource("TileSetAtlasSource_t5ptc")
 [node name="World" type="Node2D" unique_id=715088121]
 y_sort_enabled = true
 script = ExtResource("2_sl2e5")
+world_seed = SubResource("NoiseTexture2D_6m72w")
 
 [node name="GroundTileMapLayer" type="TileMapLayer" parent="." unique_id=1215690059]
 y_sort_enabled = true
