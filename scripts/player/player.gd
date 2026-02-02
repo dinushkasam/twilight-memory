@@ -3,10 +3,31 @@ extends CharacterBody2D
 @export var move_speed := 120.0
 @export var acceleration := 1.0
 
-var grid_position: Vector2i
-var standing_on_ground: bool
+var up: float
+var down: float
+var left: float
+var right: float
 
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@export var grid_position: Vector2i
+
+@export var player_direction: Direction
+@export var player_state: PlayerState
+
+enum Direction {
+	north,
+	south,
+	east,
+	west,
+	north_east,
+	north_west,
+	south_east,
+	south_west,
+}
+
+enum PlayerState {
+	moving,
+	idle
+}
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -14,7 +35,8 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
+	handle_input()
 	handle_movement()
 	update_grid_position()
 	update_animation()
@@ -23,10 +45,15 @@ func _physics_process(delta: float) -> void:
 func handle_movement():
 	var input_vector := Vector2.ZERO
 	
-	input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
-	input_vector.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
+	input_vector.x = right - left
+	input_vector.y = down - up
 	
-	input_vector = input_vector.normalized()
+	if input_vector != Vector2.ZERO:
+		input_vector = input_vector.normalized()
+		player_state = PlayerState.moving
+		player_direction = get_direction_from_vector(velocity)
+	else:
+		player_state = PlayerState.idle
 	
 	velocity = input_vector * move_speed
 	move_and_slide()
@@ -37,9 +64,31 @@ func update_grid_position():
 	var local_position := world.to_local(global_position)
 	grid_position = world.local_to_map(local_position)
 
+func handle_input() -> void:
+	up = Input.get_action_strength("ui_up")
+	down = Input.get_action_strength("ui_down")
+	left = Input.get_action_strength("ui_left")
+	right = Input.get_action_strength("ui_right")
 
 func update_animation():
 	if velocity.length() > 0:
 		pass # play walk animation
 	else:
 		pass # play idle animation
+		
+func get_direction_from_vector(v: Vector2) -> Direction:
+	if v == Vector2.ZERO:
+		return player_direction # keep last direction when idle
+	
+	if v.x == 0:
+		return Direction.north if v.y < 0 else Direction.south
+	elif v.y == 0:
+		return Direction.west if v.x < 0 else Direction.east
+	elif v.x > 0 and v.y < 0:
+		return Direction.north_east
+	elif v.x < 0 and v.y < 0:
+		return Direction.north_west
+	elif v.x > 0 and v.y > 0:
+		return Direction.south_east
+	else:
+		return Direction.south_west
