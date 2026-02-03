@@ -1,7 +1,10 @@
 extends CharacterBody2D
 
+@export var animation_tree: AnimationTree
+
 @export var move_speed := 120.0
 @export var acceleration := 1.0
+@export var tile_aspect := Vector2(1, 1)
 
 var up: float
 var down: float
@@ -12,6 +15,8 @@ var right: float
 
 @export var player_direction: Direction
 @export var player_state: PlayerState
+
+var last_facing_direction: Vector2
 
 enum Direction {
 	north,
@@ -43,10 +48,10 @@ func _physics_process(_delta: float) -> void:
 	
 
 func handle_movement():
-	var input_vector := Vector2.ZERO
-	
-	input_vector.x = right - left
-	input_vector.y = down - up
+	var input_vector := Vector2(
+		(right - left) * tile_aspect.x,
+		(down - up) * tile_aspect.y
+	)
 	
 	if input_vector != Vector2.ZERO:
 		input_vector = input_vector.normalized()
@@ -71,10 +76,14 @@ func handle_input() -> void:
 	right = Input.get_action_strength("ui_right")
 
 func update_animation():
+	var direction = velocity.normalized()
+	
 	if velocity.length() > 0:
-		pass # play walk animation
-	else:
-		pass # play idle animation
+		# y needs to be negative because in 2D, up is negative
+		last_facing_direction = Vector2(direction.x, -direction.y)
+	
+	animation_tree.set("parameters/Walking/blend_position", last_facing_direction)
+	animation_tree.set("parameters/Idle/blend_position", last_facing_direction)
 		
 func get_direction_from_vector(v: Vector2) -> Direction:
 	if v == Vector2.ZERO:

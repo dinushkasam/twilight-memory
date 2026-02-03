@@ -56,6 +56,6 @@ y_sort_enabled = true
 [node name="Player" parent="Ysort" unique_id=903636811 instance=ExtResource("4_6m72w")]
 
 [node name="Camera2D" type="Camera2D" parent="Ysort/Player" unique_id=936349371]
-zoom = Vector2(1.2, 1.2)
+zoom = Vector2(2.74, 2.74)
 process_callback = 0
 position_smoothing_enabled = true
