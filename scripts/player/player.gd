@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @export var animation_tree: AnimationTree
+@onready var player_state_machine: StateMachine = $PlayerStateMachine
 
 @export var move_speed := 120.0
 @export var acceleration := 1.0
@@ -16,7 +17,7 @@ var right: float
 @export var player_direction: Direction
 @export var player_state: PlayerState
 
-var last_facing_direction: Vector2
+@export var last_facing_direction: Vector2
 var animation_vector: Vector2
 
 enum Direction {
@@ -37,37 +38,20 @@ enum PlayerState {
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.dd
+	player_state_machine.init(self)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	handle_input()
-	handle_movement()
 	update_grid_position()
-	update_animation()
-	
+	player_state_machine.process_physics(delta)
 
-func handle_movement():
-	animation_vector = Vector2(
-		(right - left),
-		(down - up)
-	)
-	var input_vector := Vector2(
-		animation_vector.x * tile_aspect.x,
-		animation_vector.y * tile_aspect.y
-	)
-	
-	if input_vector != Vector2.ZERO:
-		input_vector = input_vector.normalized()
-		player_state = PlayerState.moving
-		player_direction = get_direction_from_vector(velocity)
-	else:
-		player_state = PlayerState.idle
-	
-	velocity = input_vector * move_speed
-	move_and_slide()
+func _unhandled_input(event: InputEvent) -> void:
+	player_state_machine.process_input(event)
 
+func _process(delta: float) -> void:
+	player_state_machine.process_frame(delta)
 
 func update_grid_position():
 	var world := get_parent().get_parent().get_node("GroundTileMapLayer") as TileMapLayer
@@ -80,16 +64,7 @@ func handle_input() -> void:
 	left = Input.get_action_strength("ui_left")
 	right = Input.get_action_strength("ui_right")
 
-func update_animation():
-	var direction = animation_vector
-	
-	if velocity.length() > 0:
-		# y needs to be negative because in 2D, up is negative
-		last_facing_direction = Vector2(direction.x, -direction.y)
-	
-	animation_tree.set("parameters/Walking/blend_position", last_facing_direction)
-	animation_tree.set("parameters/Idle/blend_position", last_facing_direction)
-		
+
 func get_direction_from_vector(v: Vector2) -> Direction:
 	if v == Vector2.ZERO:
 		return player_direction # keep last direction when idle
