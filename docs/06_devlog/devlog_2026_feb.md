@@ -5,3 +5,7 @@
 
 ## 2026-02-05
 - Fixed the player movement to align with the tilemap grid.
+- Created generic state machine class and state class.
+- Added a new state machine for the player.
+- Refactored the player movement to use the new state machine.
+- Implemented the Idle and Walking states.
