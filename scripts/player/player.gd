@@ -17,6 +17,7 @@ var right: float
 @export var player_state: PlayerState
 
 var last_facing_direction: Vector2
+var animation_vector: Vector2
 
 enum Direction {
 	north,
@@ -48,9 +49,13 @@ func _physics_process(_delta: float) -> void:
 	
 
 func handle_movement():
+	animation_vector = Vector2(
+		(right - left),
+		(down - up)
+	)
 	var input_vector := Vector2(
-		(right - left) * tile_aspect.x,
-		(down - up) * tile_aspect.y
+		animation_vector.x * tile_aspect.x,
+		animation_vector.y * tile_aspect.y
 	)
 	
 	if input_vector != Vector2.ZERO:
@@ -76,7 +81,7 @@ func handle_input() -> void:
 	right = Input.get_action_strength("ui_right")
 
 func update_animation():
-	var direction = velocity.normalized()
+	var direction = animation_vector
 	
 	if velocity.length() > 0:
 		# y needs to be negative because in 2D, up is negative

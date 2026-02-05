@@ -433,6 +433,7 @@ _data = {
 [node name="Player" type="CharacterBody2D" unique_id=1884763180 node_paths=PackedStringArray("animation_tree")]
 script = ExtResource("1_dovo2")
 animation_tree = NodePath("AnimationTree")
+tile_aspect = Vector2(2, 1)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=670120201]
 z_index = 1
