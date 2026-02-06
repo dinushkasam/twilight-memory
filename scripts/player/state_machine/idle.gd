@@ -24,10 +24,7 @@ func process_frame(_delta: float) -> State:
 	return null
 
 func handle_movement() -> State:
-	movement_vector = Vector2(
-		(parent.right - parent.left),
-		(parent.down - parent.up)
-	)
+	movement_vector = input_component.get_movement()
 	
 	if movement_vector == Vector2.ZERO:
 		parent.velocity = movement_vector
