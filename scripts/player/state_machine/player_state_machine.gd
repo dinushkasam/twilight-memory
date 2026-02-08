@@ -1,9 +1,11 @@
 extends StateMachine
 
+@export var input_component: PlayerInputComponent
 
 func init(parent: Node) -> void:
 	for child in get_children():
 		child.parent = parent
+		child.input_component = input_component
 	
 	# Initialize the default state
 	change_state(starting_state)

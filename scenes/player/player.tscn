@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://dje0xp0r0237c" path="res://scripts/player/state_machine/player_state_machine.gd" id="5_75vfm"]
 [ext_resource type="Script" uid="uid://1l86kutuei71" path="res://scripts/player/state_machine/idle.gd" id="6_0owmy"]
 [ext_resource type="Script" uid="uid://hc3djtow3jbr" path="res://scripts/player/state_machine/walk.gd" id="7_0owmy"]
+[ext_resource type="Script" uid="uid://c1ain0o2g07k6" path="res://scripts/player/player_input_component.gd" id="8_qek5x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gmlin"]
 size = Vector2(18, 8.5)
@@ -461,8 +462,9 @@ parameters/Walking/blend_position = Vector2(0, 0)
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1696139121]
 libraries/ = SubResource("AnimationLibrary_p47bc")
 
-[node name="PlayerStateMachine" type="Node" parent="." unique_id=1417474306 node_paths=PackedStringArray("starting_state")]
+[node name="PlayerStateMachine" type="Node" parent="." unique_id=1417474306 node_paths=PackedStringArray("input_component", "starting_state")]
 script = ExtResource("5_75vfm")
+input_component = NodePath("../InputComponent")
 starting_state = NodePath("Idle")
 
 [node name="Idle" type="Node" parent="PlayerStateMachine" unique_id=1575529890 node_paths=PackedStringArray("walk_state")]
@@ -472,3 +474,6 @@ walk_state = NodePath("../Walk")
 [node name="Walk" type="Node" parent="PlayerStateMachine" unique_id=376087366 node_paths=PackedStringArray("idle_state")]
 script = ExtResource("7_0owmy")
 idle_state = NodePath("../Idle")
+
+[node name="InputComponent" type="Node" parent="." unique_id=784238967]
+script = ExtResource("8_qek5x")
