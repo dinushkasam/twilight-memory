@@ -15,3 +15,4 @@
 
 ## 2026-02-08
 - Inproved the player state machine with input code.
+- Created basic foilage sprites for small tree, big tree, small bush, big bush, grass, crushed grass and flowers.
