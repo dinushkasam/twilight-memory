@@ -5,7 +5,7 @@ class_name State
 
 # Hold a reference of the parents to make updates
 var parent: Node
-var input_component: InputComponent
+var input_component: PlayerInputComponent
 
 func enter() -> void:
 	pass

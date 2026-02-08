@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://dje0xp0r0237c" path="res://scripts/player/state_machine/player_state_machine.gd" id="5_75vfm"]
 [ext_resource type="Script" uid="uid://1l86kutuei71" path="res://scripts/player/state_machine/idle.gd" id="6_0owmy"]
 [ext_resource type="Script" uid="uid://hc3djtow3jbr" path="res://scripts/player/state_machine/walk.gd" id="7_0owmy"]
-[ext_resource type="Script" uid="uid://dbkaucbppi7i3" path="res://scripts/player/input_component.gd" id="8_qek5x"]
+[ext_resource type="Script" uid="uid://c1ain0o2g07k6" path="res://scripts/player/player_input_component.gd" id="8_qek5x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gmlin"]
 size = Vector2(18, 8.5)

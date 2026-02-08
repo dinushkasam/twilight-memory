@@ -1,6 +1,6 @@
 extends StateMachine
 
-@export var input_component: InputComponent
+@export var input_component: PlayerInputComponent
 
 func init(parent: Node) -> void:
 	for child in get_children():

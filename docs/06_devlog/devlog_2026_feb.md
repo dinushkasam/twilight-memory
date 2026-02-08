@@ -9,3 +9,9 @@
 - Added a new state machine for the player.
 - Refactored the player movement to use the new state machine.
 - Implemented the Idle and Walking states.
+
+## 2026-02-06
+- Created crop sprites for corn, wheat, radish and carrot.
+
+## 2026-02-08
+- Inproved the player state machine with input code.

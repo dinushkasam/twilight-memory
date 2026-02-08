@@ -1,5 +1,5 @@
 extends Node
-class_name InputComponent
+class_name InputInterface
 
 
 func get_movement() -> Vector2:
@@ -13,5 +13,5 @@ func get_movement() -> Vector2:
 		down - up
 	)
 
-func get_input() -> void:
+func process_input(_event: InputEvent) -> void:
 	pass
