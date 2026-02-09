@@ -3,6 +3,8 @@ extends Node2D
 @onready var ground: TileMapLayer = $GroundTileMapLayer
 @onready var highlight: TileMapLayer = $GroundHighlightTileMapLayer
 
+@export var world_input_component: WorldInputComponent
+
 const BASE_BLOCKS_ID = 2
 
 const GRASS_BASE_ATLUS = Vector2i(0, 0)
@@ -22,6 +24,7 @@ func _process(_delta: float) -> void:
 
 func _input(event: InputEvent) -> void:
 	select_cell_mouse_click(event)
+	world_input_component.process_input(event)
 
 
 func generate_test_map():
