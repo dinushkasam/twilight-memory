@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cj8bdaiy0rtyu" path="res://scripts/world/world.gd" id="2_sl2e5"]
 [ext_resource type="PackedScene" uid="uid://cdwo6vwajx1tj" path="res://scenes/player/player.tscn" id="4_6m72w"]
+[ext_resource type="Script" uid="uid://43wdl07r3s23" path="res://scripts/world/world_input_component.gd" id="4_t5ptc"]
 [ext_resource type="Texture2D" uid="uid://rw7pybpuxyr7" path="res://assets/sprites/tiles/Base-blocks.png" id="4_v5dby"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_1fp7r"]
@@ -46,10 +47,11 @@ tile_size = Vector2i(64, 32)
 physics_layer_0/collision_layer = 1
 sources/2 = SubResource("TileSetAtlasSource_t5ptc")
 
-[node name="World" type="Node2D" unique_id=715088121]
+[node name="World" type="Node2D" unique_id=715088121 node_paths=PackedStringArray("world_input_component")]
 y_sort_enabled = true
 script = ExtResource("2_sl2e5")
 world_seed = SubResource("NoiseTexture2D_6m72w")
+world_input_component = NodePath("WorldInputComponent")
 
 [node name="GroundTileMapLayer" type="TileMapLayer" parent="." unique_id=1215690059]
 y_sort_enabled = true
@@ -70,3 +72,7 @@ y_sort_enabled = true
 zoom = Vector2(2.74, 2.74)
 process_callback = 0
 position_smoothing_enabled = true
+
+[node name="WorldInputComponent" type="Node" parent="." unique_id=1372918157 node_paths=PackedStringArray("camera")]
+script = ExtResource("4_t5ptc")
+camera = NodePath("../Ysort/Player/Camera2D")

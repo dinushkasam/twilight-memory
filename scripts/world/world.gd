@@ -4,6 +4,7 @@ extends Node2D
 @onready var highlight: TileMapLayer = $GroundHighlightTileMapLayer
 
 @export var world_seed: NoiseTexture2D
+@export var world_input_component: WorldInputComponent
 
 const BASE_BLOCKS_ID = 2
 
@@ -28,6 +29,7 @@ func _process(_delta: float) -> void:
 
 func _input(event: InputEvent) -> void:
 	select_cell_mouse_click(event)
+	world_input_component.process_input(event)
 
 
 func generate_world_map():
@@ -35,7 +37,7 @@ func generate_world_map():
 		for y in range(-world_width/2, world_width/2):
 			# noise value is between -0.5 and + 0.5
 			var noise = world_seed.noise.get_noise_2d(x, y)
-			
+
 			if noise >= 0.25:
 				ground.set_cell(
 					Vector2i(x, y),
@@ -70,7 +72,7 @@ func generate_boundaries():
 		Vector2i(1, 0)
 	]
 	var used = ground.get_used_cells()
-	
+
 	for tile in used:
 		for offset in offsets:
 			var current_tile = tile + offset
@@ -80,15 +82,15 @@ func generate_boundaries():
 
 func update_hovered_tile():
 	var mouse_position := get_global_mouse_position()
-	
+
 	var local_position := ground.to_local(mouse_position)
 	var cell := ground.local_to_map(local_position)
-	
+
 	if cell == hovered_cell:
 		return
-		
+
 	highlight.clear()
-	
+
 	if ground.get_cell_source_id(cell) != -1:
 		highlight.set_cell(
 			cell,
@@ -103,4 +105,3 @@ func select_cell_mouse_click(event: InputEvent):
 		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 			if ground.get_cell_source_id(hovered_cell) != -1:
 				print("Clicked tile: ", hovered_cell)
-	
