@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://c5bjy3f46nkg1"]
+
+[ext_resource type="Texture2D" uid="uid://d2tkfgw4jwwy3" path="res://assets/sprites/tiles/foilage/foilage-sprite.png" id="1_pmbd0"]
+[ext_resource type="Script" uid="uid://yik4803sf2fh" path="res://scripts/game_objects/grass_object.gd" id="1_qkjbx"]
+[ext_resource type="Script" uid="uid://bgc21hyw0wa2w" path="res://scripts/game_objects/grass_component.gd" id="2_tej3y"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tej3y"]
+atlas = ExtResource("1_pmbd0")
+region = Rect2(768, 0, 128, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qkjbx"]
+atlas = ExtResource("1_pmbd0")
+region = Rect2(256, 0, 128, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wrfkr"]
+atlas = ExtResource("1_pmbd0")
+region = Rect2(384, 0, 128, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hwesp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tej3y")
+}],
+"loop": true,
+"name": &"flowers",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qkjbx")
+}],
+"loop": true,
+"name": &"grass",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wrfkr")
+}],
+"loop": true,
+"name": &"grass_rustle",
+"speed": 5.0
+}]
+
+[node name="GrassObject" type="Area2D" unique_id=597356738]
+script = ExtResource("1_qkjbx")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2008897183]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_hwesp")
+animation = &"flowers"
+offset = Vector2(0, -16)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1877999037]
+position = Vector2(0, -16)
+polygon = PackedVector2Array(-35, 16, 0, 2, 35, 16, 0, 32)
+
+[node name="GrassComponent" type="Node" parent="." unique_id=2038324461 node_paths=PackedStringArray("sprite", "collision")]
+script = ExtResource("2_tej3y")
+sprite = NodePath("../AnimatedSprite2D")
+collision = NodePath("../CollisionPolygon2D")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
