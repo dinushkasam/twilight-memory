@@ -1,9 +1,12 @@
 [gd_scene format=3 uid="uid://bcfjxy7im26cv"]
 
+[ext_resource type="PackedScene" uid="uid://fbqtvk0uma4y" path="res://scenes/game_objects/tree_object.tscn" id="2_bq33v"]
 [ext_resource type="Script" uid="uid://cj8bdaiy0rtyu" path="res://scripts/world/world.gd" id="2_sl2e5"]
+[ext_resource type="PackedScene" uid="uid://c5bjy3f46nkg1" path="res://scenes/game_objects/grass_object.tscn" id="3_j2gmx"]
 [ext_resource type="PackedScene" uid="uid://cdwo6vwajx1tj" path="res://scenes/player/player.tscn" id="4_6m72w"]
 [ext_resource type="Script" uid="uid://43wdl07r3s23" path="res://scripts/world/world_input_component.gd" id="4_t5ptc"]
 [ext_resource type="Texture2D" uid="uid://rw7pybpuxyr7" path="res://assets/sprites/tiles/Base-blocks.png" id="4_v5dby"]
+[ext_resource type="Texture2D" uid="uid://357wrcnl6yw1" path="res://assets/sprites/tiles/crop-block.png" id="5_bq33v"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_1fp7r"]
 noise_type = 3
@@ -14,6 +17,16 @@ frequency = 0.0514
 width = 64
 height = 64
 noise = SubResource("FastNoiseLite_1fp7r")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_1yooq"]
+noise_type = 3
+seed = 10
+frequency = 0.2718
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_gb53w"]
+width = 64
+height = 64
+noise = SubResource("FastNoiseLite_1yooq")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t5ptc"]
 resource_name = "base-blocks"
@@ -39,6 +52,12 @@ texture_region_size = Vector2i(64, 64)
 0:1/0/texture_origin = Vector2i(0, -16)
 0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, 0, 0, -16, 32, 0, 0, 16)
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gb53w"]
+resource_name = "crop-block"
+texture = ExtResource("5_bq33v")
+texture_region_size = Vector2i(64, 64)
+0:1/0 = 0
+
 [sub_resource type="TileSet" id="TileSet_1fp7r"]
 tile_shape = 1
 tile_layout = 5
@@ -46,22 +65,31 @@ tile_offset_axis = 1
 tile_size = Vector2i(64, 32)
 physics_layer_0/collision_layer = 1
 sources/2 = SubResource("TileSetAtlasSource_t5ptc")
+sources/5 = SubResource("TileSetAtlasSource_gb53w")
 
 [node name="World" type="Node2D" unique_id=715088121 node_paths=PackedStringArray("world_input_component")]
 y_sort_enabled = true
 script = ExtResource("2_sl2e5")
 world_seed = SubResource("NoiseTexture2D_6m72w")
+object_seed = SubResource("NoiseTexture2D_gb53w")
 world_input_component = NodePath("WorldInputComponent")
+tree_scene = ExtResource("2_bq33v")
+grass_scene = ExtResource("3_j2gmx")
 
 [node name="GroundTileMapLayer" type="TileMapLayer" parent="." unique_id=1215690059]
+z_index = -1
 y_sort_enabled = true
 texture_filter = 1
 tile_set = SubResource("TileSet_1fp7r")
 
 [node name="GroundHighlightTileMapLayer" type="TileMapLayer" parent="." unique_id=564940117]
+z_index = -1
 y_sort_enabled = true
 texture_filter = 1
 tile_set = SubResource("TileSet_1fp7r")
+
+[node name="GameObjects" type="Node2D" parent="." unique_id=281104463]
+y_sort_enabled = true
 
 [node name="Ysort" type="Node2D" parent="." unique_id=342279187]
 y_sort_enabled = true

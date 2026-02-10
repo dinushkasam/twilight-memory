@@ -440,7 +440,6 @@ animation_tree = NodePath("AnimationTree")
 tile_aspect = Vector2(2, 1)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=670120201]
-z_index = 1
 texture_filter = 1
 position = Vector2(-1, -4)
 sprite_frames = ExtResource("1_8afob")

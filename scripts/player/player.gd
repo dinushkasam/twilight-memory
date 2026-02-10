@@ -30,6 +30,7 @@ enum PlayerState {
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	player_state_machine.init(self)
+	add_to_group("character", true)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

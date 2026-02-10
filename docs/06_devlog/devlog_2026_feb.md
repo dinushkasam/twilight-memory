@@ -19,3 +19,7 @@
 
 ## 2026-02-09
 - Created zoom in and out feature for the camera.
+
+## 2026-02-10
+- Updated the farming system documentation.
+- Finished the basic world generation code.

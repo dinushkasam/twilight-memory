@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://fbqtvk0uma4y"]
+
+[ext_resource type="Texture2D" uid="uid://d2tkfgw4jwwy3" path="res://assets/sprites/tiles/foilage/foilage-sprite.png" id="1_lqplk"]
+[ext_resource type="Script" uid="uid://b207gd2k8vfc4" path="res://scripts/game_objects/tree_object.gd" id="1_mqjmw"]
+[ext_resource type="Script" uid="uid://bf3mep2sk2kgv" path="res://scripts/game_objects/tree_component.gd" id="2_cfuag"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dyfrg"]
+atlas = ExtResource("1_lqplk")
+region = Rect2(0, 0, 128, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cfuag"]
+atlas = ExtResource("1_lqplk")
+region = Rect2(512, 0, 128, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pxd4g"]
+atlas = ExtResource("1_lqplk")
+region = Rect2(128, 0, 128, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mqjmw"]
+atlas = ExtResource("1_lqplk")
+region = Rect2(640, 0, 128, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dyfrg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dyfrg")
+}],
+"loop": true,
+"name": &"big_bush",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cfuag")
+}],
+"loop": true,
+"name": &"big_tree",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pxd4g")
+}],
+"loop": true,
+"name": &"small_bush",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mqjmw")
+}],
+"loop": true,
+"name": &"small_tree",
+"speed": 5.0
+}]
+
+[node name="TreeObject" type="StaticBody2D" unique_id=2040654906]
+script = ExtResource("1_mqjmw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=617992553]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_dyfrg")
+animation = &"small_bush"
+offset = Vector2(0, -16)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=201956233]
+position = Vector2(0, -16)
+polygon = PackedVector2Array(-27, 15, 0, 2, 29, 15, 0, 26)
+
+[node name="TreeComponent" type="Node" parent="." unique_id=1631635565 node_paths=PackedStringArray("sprite")]
+script = ExtResource("2_cfuag")
+sprite = NodePath("../AnimatedSprite2D")
