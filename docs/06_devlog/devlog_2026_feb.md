@@ -23,3 +23,7 @@
 ## 2026-02-10
 - Updated the farming system documentation.
 - Finished the basic world generation code.
+
+## 2026-02-13
+- Cleaned up the world scene code and world generation code.
+- Applied Object Oriented Programming principles to the world generation code.
