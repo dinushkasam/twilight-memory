@@ -12,8 +12,8 @@ var current_state: State
 
 # Initialize the state machine by giving each child a reference
 # to the parent object and initialize the default state.
-func init(_parent: Node) -> void:
-	pass
+# Since GDScript does not have overriding feature (v4.6) we need to define
+# The init function in the child
 
 # Change to a new state and call any exit logic on the current state
 func change_state(_new_state: State) -> void:

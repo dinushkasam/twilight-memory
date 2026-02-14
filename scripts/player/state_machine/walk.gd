@@ -3,9 +3,6 @@ extends State
 @export
 var idle_state: State
 
-@export var move_speed := 120.0
-@export var acceleration := 1.0
-
 var movement_vector: Vector2
 
 func enter() -> void:
@@ -31,9 +28,11 @@ func handle_movement() -> State:
 	movement_vector = input_component.get_movement()
 	
 	if movement_vector != Vector2.ZERO:
+		# Read config
+		var tile_aspect: Vector2 = self.parent.configs.tile_aspect
 		var input_vector := Vector2(
-			movement_vector.x * parent.tile_aspect.x,
-			movement_vector.y * parent.tile_aspect.y
+			movement_vector.x * tile_aspect.x,
+			movement_vector.y * tile_aspect.y
 		)
 		input_vector = input_vector.normalized()
 		
@@ -43,7 +42,10 @@ func handle_movement() -> State:
 			-movement_vector.y
 		)
 		
-		parent.velocity = input_vector * move_speed
+		# Read configs
+		var move_speed := self.parent.configs.move_speed
+		var acceleration := self.parent.configs.acceleration
+		parent.velocity = input_vector * move_speed * acceleration
 		parent.move_and_slide()
 		return null
 	else:

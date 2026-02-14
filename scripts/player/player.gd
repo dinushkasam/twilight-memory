@@ -1,15 +1,42 @@
 extends CharacterBody2D
+class_name Player
 
 @export var animation_tree: AnimationTree
-@onready var player_state_machine: StateMachine = $PlayerStateMachine
-
-@export var tile_aspect := Vector2(1, 1)
-@export var grid_position: Vector2i
+@export var player_state_machine: StateMachine
+@export var player_input_component: PlayerInputComponent
 
 @export var player_direction: Direction
 @export var player_state: PlayerState
 
 @export var last_facing_direction: Vector2
+
+# World State
+var world_context: WorldContext
+
+# Config provider
+var configs: ConfigProvider
+
+# Need to call the init function to inject dependencies
+func init(context: WorldContext, config_provider: ConfigProvider):
+	world_context = context
+	configs = config_provider
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	player_input_component.init(world_context)
+	player_state_machine.init(self)
+	add_to_group("character", true)
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _physics_process(delta: float) -> void:
+	player_state_machine.process_physics(delta)
+
+func _unhandled_input(event: InputEvent) -> void:
+	player_state_machine.process_input(event)
+
+func _process(delta: float) -> void:
+	player_state_machine.process_frame(delta)
+
 
 enum Direction {
 	north,
@@ -27,28 +54,6 @@ enum PlayerState {
 	idle
 }
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	player_state_machine.init(self)
-	add_to_group("character", true)
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta: float) -> void:
-	update_grid_position()
-	player_state_machine.process_physics(delta)
-
-func _unhandled_input(event: InputEvent) -> void:
-	player_state_machine.process_input(event)
-
-func _process(delta: float) -> void:
-	player_state_machine.process_frame(delta)
-
-
-func update_grid_position():
-	var world := get_parent().get_parent().get_node("GroundTileMapLayer") as TileMapLayer
-	var local_position := world.to_local(global_position)
-	grid_position = world.local_to_map(local_position)
 
 func get_direction_from_vector(v: Vector2) -> Direction:
 	if v == Vector2.ZERO:
@@ -66,3 +71,7 @@ func get_direction_from_vector(v: Vector2) -> Direction:
 		return Direction.south_east
 	else:
 		return Direction.south_west
+
+
+func _on_world_context_tile_clicked(coords: Vector2i) -> void:
+	print("Player clicked tile: ", coords)

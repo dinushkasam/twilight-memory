@@ -23,3 +23,8 @@ func get_hovered_cell() -> Vector2i:
 	var local_position := ground.to_local(mouse_position)
 	var cell := ground.local_to_map(local_position)
 	return cell
+
+func get_grid_position(node: Node2D) -> Vector2i:
+	var local_position := ground.to_local(node.global_position)
+	var grid_position = ground.local_to_map(local_position)
+	return grid_position
