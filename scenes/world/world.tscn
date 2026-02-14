@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dqmvewxjk35kd" path="res://scripts/world/world_context.gd" id="2_1yooq"]
 [ext_resource type="PackedScene" uid="uid://fbqtvk0uma4y" path="res://scenes/game_objects/tree_object.tscn" id="2_bq33v"]
+[ext_resource type="Script" uid="uid://c2r556vky6dkn" path="res://scripts/world/config_provider.gd" id="2_gb53w"]
 [ext_resource type="Script" uid="uid://cj8bdaiy0rtyu" path="res://scripts/world/world.gd" id="2_sl2e5"]
 [ext_resource type="PackedScene" uid="uid://c5bjy3f46nkg1" path="res://scenes/game_objects/grass_object.tscn" id="3_j2gmx"]
 [ext_resource type="PackedScene" uid="uid://cdwo6vwajx1tj" path="res://scenes/player/player.tscn" id="4_6m72w"]
@@ -69,14 +70,18 @@ width = 64
 height = 64
 noise = SubResource("FastNoiseLite_1yooq")
 
-[node name="World" type="Node2D" unique_id=715088121 node_paths=PackedStringArray("world_input_component", "world_generator_component", "world_context", "ground", "highlight")]
+[node name="World" type="Node2D" unique_id=715088121 node_paths=PackedStringArray("world_input_component", "world_generator_component", "world_context", "config_provider", "ground", "highlight")]
 y_sort_enabled = true
 script = ExtResource("2_sl2e5")
 world_input_component = NodePath("WorldInputComponent")
 world_generator_component = NodePath("WorldGeneratorComponent")
 world_context = NodePath("WorldContext")
+config_provider = NodePath("ConfigProvider")
 ground = NodePath("GroundTileMapLayer")
 highlight = NodePath("GroundHighlightTileMapLayer")
+
+[node name="ConfigProvider" type="Node" parent="." unique_id=378685759]
+script = ExtResource("2_gb53w")
 
 [node name="WorldContext" type="Node2D" parent="." unique_id=755016948]
 script = ExtResource("2_1yooq")
@@ -118,3 +123,5 @@ world_seed = SubResource("NoiseTexture2D_6m72w")
 object_seed = SubResource("NoiseTexture2D_gb53w")
 tree_scene = ExtResource("2_bq33v")
 grass_scene = ExtResource("3_j2gmx")
+
+[connection signal="tile_clicked" from="WorldContext" to="Ysort/Player" method="_on_world_context_tile_clicked"]

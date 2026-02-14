@@ -4,7 +4,7 @@ class_name State
 # The generic state class that will handle all the state logic
 
 # Hold a reference of the parents to make updates
-var parent: Node
+var parent: Player
 var input_component: PlayerInputComponent
 
 func enter() -> void:

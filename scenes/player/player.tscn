@@ -434,10 +434,11 @@ _data = {
 &"walk_west": SubResource("Animation_8ydkj")
 }
 
-[node name="Player" type="CharacterBody2D" unique_id=1884763180 node_paths=PackedStringArray("animation_tree")]
+[node name="Player" type="CharacterBody2D" unique_id=1884763180 node_paths=PackedStringArray("animation_tree", "player_state_machine", "player_input_component")]
 script = ExtResource("1_dovo2")
 animation_tree = NodePath("AnimationTree")
-tile_aspect = Vector2(2, 1)
+player_state_machine = NodePath("PlayerStateMachine")
+player_input_component = NodePath("InputComponent")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=670120201]
 texture_filter = 1

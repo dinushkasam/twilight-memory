@@ -2,7 +2,7 @@ extends StateMachine
 
 @export var input_component: PlayerInputComponent
 
-func init(parent: Node) -> void:
+func init(parent: Player) -> void:
 	for child in get_children():
 		child.parent = parent
 		child.input_component = input_component
