@@ -4,11 +4,9 @@ class_name WorldGeneratorCOmponent
 # World State
 var world_context: WorldContext
 
+# Random seeds (Perlin noise)
 @export var world_seed: NoiseTexture2D
 @export var object_seed: NoiseTexture2D
-
-@export var tree_scene: PackedScene
-@export var grass_scene: PackedScene
 
 # Constants
 const BASE_BLOCKS_ID = 2
@@ -92,28 +90,14 @@ func generate_game_objects():
 			if noise > 0:
 				var tile_data = world_context.ground.get_cell_atlas_coords(tile_position)
 				if tile_data == GRASS_CUT_ATLUS:
-						spawn_grass(tile_position, GrassComponent.GrassVariants.grass)
+						world_context.spawn_grass(tile_position, GrassComponent.GrassVariants.grass)
 				elif tile_data == FLOWERS_ATLUS:
-					spawn_grass(tile_position, GrassComponent.GrassVariants.flowers)
+					world_context.spawn_grass(tile_position, GrassComponent.GrassVariants.flowers)
 			elif noise > -0.05 && noise < -0.045:
-				spawn_tree(tile_position, TreeComponent.TreeVariants.big_tree)
+				world_context.spawn_tree(tile_position, TreeComponent.TreeVariants.big_tree)
 			elif noise > -0.1 && noise < -0.095:
-				spawn_tree(tile_position, TreeComponent.TreeVariants.big_bush)
+				world_context.spawn_tree(tile_position, TreeComponent.TreeVariants.big_bush)
 			elif noise > -0.25 && noise < -0.245:
-				spawn_tree(tile_position, TreeComponent.TreeVariants.small_tree)
+				world_context.spawn_tree(tile_position, TreeComponent.TreeVariants.small_tree)
 			elif noise > -0.3 && noise < -0.295:
-				spawn_tree(tile_position, TreeComponent.TreeVariants.small_bush)
-
-
-# Helper functions
-func spawn_grass(coords: Vector2i, variant: GrassComponent.GrassVariants):
-	var grass = grass_scene.instantiate()
-	grass.set("position", world_context.ground.map_to_local(coords))
-	grass.set("grass_variant", variant)
-	world_context.game_objects.add_child(grass)
-
-func spawn_tree(coords: Vector2i, variant: TreeComponent.TreeVariants):
-	var tree = tree_scene.instantiate()
-	tree.set("position", world_context.ground.map_to_local(coords))
-	tree.set("tree_variant", variant)
-	world_context.game_objects.add_child(tree)
+				world_context.spawn_tree(tile_position, TreeComponent.TreeVariants.small_bush)
