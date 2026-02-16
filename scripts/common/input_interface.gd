@@ -20,10 +20,10 @@ func get_movement() -> Vector2:
 	)
 
 func wants_zoom_in() -> bool:
-	return true if Input.is_action_just_pressed("zoom_in") else false
+	return Input.is_action_just_pressed("zoom_in")
 
 func wants_zoom_out() -> bool:
-	return true if Input.is_action_just_pressed("zoom_out") else false
+	return Input.is_action_just_pressed("zoom_out")
 
 func left_mouse_clicked(event: InputEvent) -> bool:
 	if event is InputEventMouseButton:
