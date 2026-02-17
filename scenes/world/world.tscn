@@ -5,9 +5,11 @@
 [ext_resource type="Script" uid="uid://c2r556vky6dkn" path="res://scripts/world/config_provider.gd" id="2_gb53w"]
 [ext_resource type="Script" uid="uid://cj8bdaiy0rtyu" path="res://scripts/world/world.gd" id="2_sl2e5"]
 [ext_resource type="PackedScene" uid="uid://c5bjy3f46nkg1" path="res://scenes/game_objects/grass_object.tscn" id="3_j2gmx"]
+[ext_resource type="Resource" uid="uid://65vbufupe8mc" path="res://resources/game_config.tres" id="3_srmg5"]
 [ext_resource type="Script" uid="uid://b5h5kkciquinw" path="res://scripts/common/game_object_manager.gd" id="4_5qq27"]
 [ext_resource type="PackedScene" uid="uid://cdwo6vwajx1tj" path="res://scenes/player/player.tscn" id="4_6m72w"]
 [ext_resource type="Script" uid="uid://43wdl07r3s23" path="res://scripts/world/world_input_component.gd" id="4_t5ptc"]
+[ext_resource type="Resource" uid="uid://bq13ykqvvpumt" path="res://resources/player_config.tres" id="4_umvgx"]
 [ext_resource type="Texture2D" uid="uid://rw7pybpuxyr7" path="res://assets/sprites/tiles/Base-blocks.png" id="4_v5dby"]
 [ext_resource type="Texture2D" uid="uid://357wrcnl6yw1" path="res://assets/sprites/tiles/crop-block.png" id="5_bq33v"]
 [ext_resource type="Script" uid="uid://dexvvu444lfa1" path="res://scripts/world/world_generator_component.gd" id="6_j2gmx"]
@@ -84,6 +86,8 @@ highlight = NodePath("GroundHighlightTileMapLayer")
 
 [node name="ConfigProvider" type="Node" parent="." unique_id=378685759]
 script = ExtResource("2_gb53w")
+game_config = ExtResource("3_srmg5")
+player_config = ExtResource("4_umvgx")
 
 [node name="GameObjectManager" type="Node2D" parent="." unique_id=998998708]
 script = ExtResource("4_5qq27")

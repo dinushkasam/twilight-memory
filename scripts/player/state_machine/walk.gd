@@ -29,7 +29,7 @@ func handle_movement() -> State:
 	
 	if movement_vector != Vector2.ZERO:
 		# Read config
-		var tile_aspect: Vector2 = self.parent.configs.tile_aspect
+		var tile_aspect: Vector2 = self.parent.configs.game_config.tile_aspect
 		var input_vector := Vector2(
 			movement_vector.x * tile_aspect.x,
 			movement_vector.y * tile_aspect.y
@@ -43,8 +43,8 @@ func handle_movement() -> State:
 		)
 		
 		# Read configs
-		var move_speed := self.parent.configs.move_speed
-		var acceleration := self.parent.configs.acceleration
+		var move_speed := self.parent.configs.player_config.move_speed
+		var acceleration := self.parent.configs.player_config.acceleration
 		parent.velocity = input_vector * move_speed * acceleration
 		parent.move_and_slide()
 		return null
