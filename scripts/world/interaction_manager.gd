@@ -20,7 +20,7 @@ func interact_at_tile(coords: Vector2i, actor: Node2D, tool: Node2D):
 	for hit in results:
 		var node: Node = hit.collider
 		if node.is_in_group("interactable"):
-			var interactable: InteractableInterface = node.get_node("InteractableComponent")
+			var interactable: InteractableInterface = node.get_meta("interactable", null)
 			if interactable.can_interact(actor, tool):
 				if best == null or interactable.interaction_priority > best.interaction_priority:
 					best = interactable

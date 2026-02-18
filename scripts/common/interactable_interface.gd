@@ -6,6 +6,7 @@ class_name InteractableInterface
 
 func _ready() -> void:
 	parent.add_to_group("interactable")
+	parent.set_meta("interactable", self)
 
 # Extensible methods
 func can_interact(_actor: Node2D, _tool: Node2D) -> bool:
