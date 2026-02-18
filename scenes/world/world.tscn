@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://rw7pybpuxyr7" path="res://assets/sprites/tiles/Base-blocks.png" id="4_v5dby"]
 [ext_resource type="Texture2D" uid="uid://357wrcnl6yw1" path="res://assets/sprites/tiles/crop-block.png" id="5_bq33v"]
 [ext_resource type="Script" uid="uid://dexvvu444lfa1" path="res://scripts/world/world_generator_component.gd" id="6_j2gmx"]
+[ext_resource type="Script" uid="uid://d0as7ovf0xmr2" path="res://scripts/world/interaction_manager.gd" id="8_umvgx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t5ptc"]
 resource_name = "base-blocks"
@@ -93,6 +94,9 @@ player_config = ExtResource("4_umvgx")
 script = ExtResource("4_5qq27")
 tree_scene = ExtResource("2_bq33v")
 grass_scene = ExtResource("3_j2gmx")
+
+[node name="InteractionManager" type="Node" parent="." unique_id=534289190]
+script = ExtResource("8_umvgx")
 
 [node name="WorldContext" type="Node2D" parent="." unique_id=755016948]
 script = ExtResource("2_1yooq")
