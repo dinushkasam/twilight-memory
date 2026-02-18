@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://d2tkfgw4jwwy3" path="res://assets/sprites/tiles/foilage/foilage-sprite.png" id="1_lqplk"]
 [ext_resource type="Script" uid="uid://b207gd2k8vfc4" path="res://scripts/game_objects/tree_object.gd" id="1_mqjmw"]
 [ext_resource type="Script" uid="uid://bf3mep2sk2kgv" path="res://scripts/game_objects/tree_component.gd" id="2_cfuag"]
+[ext_resource type="Script" uid="uid://ca3gfetc3t1fx" path="res://scripts/game_objects/interactibles/interactible_tree.gd" id="4_dyfrg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dyfrg"]
 atlas = ExtResource("1_lqplk")
@@ -72,5 +73,10 @@ polygon = PackedVector2Array(-27, 15, 0, 2, 29, 15, 0, 26)
 [node name="TreeComponent" type="Node" parent="." unique_id=1631635565 node_paths=PackedStringArray("sprite")]
 script = ExtResource("2_cfuag")
 sprite = NodePath("../AnimatedSprite2D")
+
+[node name="InteractableComponent" type="Node" parent="." unique_id=1651760808 node_paths=PackedStringArray("tree_component", "parent")]
+script = ExtResource("4_dyfrg")
+tree_component = NodePath("../TreeComponent")
+parent = NodePath("..")
 
 [connection signal="tree_died" from="TreeComponent" to="." method="_on_tree_component_tree_died"]

@@ -1,4 +1,4 @@
-extends InteractibleArea
+extends Area2D
 
 @export var grass_variant: GrassComponent.GrassVariants
 
@@ -7,14 +7,6 @@ extends InteractibleArea
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	grass_component.set_variant(grass_variant)
-
-
-# Overrides
-func can_interact(actor: Node2D, _tool: Node2D) -> bool:
-	return true if actor is Player else false
-
-func interact(_actor: Node2D, _tool: Node2D):
-	grass_component.hit_grass()
 
 
 # Signal processing
