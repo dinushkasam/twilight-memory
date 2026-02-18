@@ -74,4 +74,4 @@ func get_direction_from_vector(v: Vector2) -> Direction:
 
 
 func _on_world_context_tile_clicked(coords: Vector2i) -> void:
-	print("Player clicked tile: ", coords)
+	world_context.interact(coords, self, null)

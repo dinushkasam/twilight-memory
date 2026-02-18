@@ -6,3 +6,4 @@ func get_movement() -> Vector2:
 
 func process_input(event: InputEvent) -> void:
 	super(event)
+	

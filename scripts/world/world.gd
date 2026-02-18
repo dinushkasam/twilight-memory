@@ -17,7 +17,8 @@ func _ready() -> void:
 	world_context.init(
 		%GroundTileMapLayer,
 		$GameObjectManager,
-		%GroundHighlightTileMapLayer
+		%GroundHighlightTileMapLayer,
+		$InteractionManager
 	)
 	
 	# Initialize components with world context
