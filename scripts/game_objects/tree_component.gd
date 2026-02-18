@@ -14,6 +14,8 @@ enum TreeVariants {
 	big_bush
 }
 
+signal tree_died
+
 func set_variant(variation: TreeVariants):
 	match variation:
 		TreeVariants.small_tree:
@@ -24,3 +26,8 @@ func set_variant(variation: TreeVariants):
 			sprite.play("small_bush")
 		TreeVariants.big_bush:
 			sprite.play("big_bush")
+
+func hit_tree(damage: int):
+	health -= damage
+	if health <= 0:
+		tree_died.emit()

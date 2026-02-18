@@ -55,8 +55,9 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="TreeObject" type="StaticBody2D" unique_id=2040654906]
+[node name="TreeObject" type="StaticBody2D" unique_id=2040654906 node_paths=PackedStringArray("tree_component")]
 script = ExtResource("1_mqjmw")
+tree_component = NodePath("TreeComponent")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=617992553]
 texture_filter = 1
@@ -71,3 +72,5 @@ polygon = PackedVector2Array(-27, 15, 0, 2, 29, 15, 0, 26)
 [node name="TreeComponent" type="Node" parent="." unique_id=1631635565 node_paths=PackedStringArray("sprite")]
 script = ExtResource("2_cfuag")
 sprite = NodePath("../AnimatedSprite2D")
+
+[connection signal="tree_died" from="TreeComponent" to="." method="_on_tree_component_tree_died"]
