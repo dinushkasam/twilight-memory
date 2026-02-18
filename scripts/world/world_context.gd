@@ -6,6 +6,7 @@ var ground: TileMapLayer
 var highlight: TileMapLayer
 var game_object_manager: GameObjectManager
 var highlighted_cell: Vector2i
+var interaction_manager: InteractionManager
 
 # Signals
 @warning_ignore("unused_signal")
@@ -16,11 +17,15 @@ signal object_spawned(node: Node)
 func init(
 	ground_arg: TileMapLayer,
 	game_obj_mgr_arg: GameObjectManager,
-	highlight_arg: TileMapLayer
+	highlight_arg: TileMapLayer,
+	interaction_mgr_arg: InteractionManager
 ):
 	ground = ground_arg
 	game_object_manager = game_obj_mgr_arg
 	highlight = highlight_arg
+	interaction_manager = interaction_mgr_arg
+	
+	interaction_manager.world = self
 
 
 # Tile Management
@@ -48,3 +53,8 @@ func spawn_tree(coords: Vector2i, variant: TreeComponent.TreeVariants):
 		ground.map_to_local(coords),
 		variant
 	)
+
+
+# Interaction Manager
+func interact(coords: Vector2i, actor: Node2D, tool: Node2D):
+	interaction_manager.interact_at_tile(coords, actor, tool)

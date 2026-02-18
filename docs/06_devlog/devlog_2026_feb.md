@@ -27,3 +27,15 @@
 ## 2026-02-13
 - Cleaned up the world scene code and world generation code.
 - Applied Object Oriented Programming principles to the world generation code.
+
+## 2026-02-14
+- Created the game object manager class and cleaned up the world scene code.
+
+## 2026-02-15
+- World generation code cleanup.
+
+## 2026-02-17
+- Implemented the config provider pattern.
+
+## 2026-02-18
+- Created the interaction system.

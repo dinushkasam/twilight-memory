@@ -10,6 +10,8 @@ enum GrassVariants {
 	grass_rustle
 }
 
+signal grass_died
+
 func set_variant(variation: GrassVariants):
 	match variation:
 		GrassVariants.flowers:
@@ -26,3 +28,6 @@ func walking_on_tile(body: Node2D):
 func exit_tile(body: Node2D):
 	if body.is_in_group("character") && sprite.animation == "grass_rustle":
 		sprite.play("grass")
+
+func hit_grass():
+	grass_died.emit()

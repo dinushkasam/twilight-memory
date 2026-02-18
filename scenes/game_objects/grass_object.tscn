@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://d2tkfgw4jwwy3" path="res://assets/sprites/tiles/foilage/foilage-sprite.png" id="1_pmbd0"]
 [ext_resource type="Script" uid="uid://yik4803sf2fh" path="res://scripts/game_objects/grass_object.gd" id="1_qkjbx"]
 [ext_resource type="Script" uid="uid://bgc21hyw0wa2w" path="res://scripts/game_objects/grass_component.gd" id="2_tej3y"]
+[ext_resource type="Script" uid="uid://dt1oqq2o6e8fh" path="res://scripts/game_objects/interactibles/interactible_grass.gd" id="4_wrfkr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tej3y"]
 atlas = ExtResource("1_pmbd0")
@@ -43,8 +44,9 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="GrassObject" type="Area2D" unique_id=597356738]
+[node name="GrassObject" type="Area2D" unique_id=597356738 node_paths=PackedStringArray("grass_component")]
 script = ExtResource("1_qkjbx")
+grass_component = NodePath("GrassComponent")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2008897183]
 texture_filter = 1
@@ -61,5 +63,11 @@ script = ExtResource("2_tej3y")
 sprite = NodePath("../AnimatedSprite2D")
 collision = NodePath("../CollisionPolygon2D")
 
+[node name="InteractableComponent" type="Node" parent="." unique_id=1819441550 node_paths=PackedStringArray("grass_component", "parent")]
+script = ExtResource("4_wrfkr")
+grass_component = NodePath("../GrassComponent")
+parent = NodePath("..")
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="grass_died" from="GrassComponent" to="." method="_on_grass_component_grass_died"]
