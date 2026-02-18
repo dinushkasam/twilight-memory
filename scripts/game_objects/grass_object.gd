@@ -1,4 +1,4 @@
-extends Area2D
+extends InteractibleArea
 
 @export var grass_variant: GrassComponent.GrassVariants
 

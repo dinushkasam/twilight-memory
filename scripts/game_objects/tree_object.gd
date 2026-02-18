@@ -1,4 +1,4 @@
-extends StaticBody2D
+extends InteractibleStaticBody
 
 
 @export var tree_variant: TreeComponent.TreeVariants
