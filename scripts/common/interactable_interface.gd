@@ -9,8 +9,8 @@ func _ready() -> void:
 	parent.set_meta("interactable", self)
 
 # Extensible methods
-func can_interact(_actor: Node2D, _tool: Node2D) -> bool:
+func can_interact(_actor: Node2D, _tool: Tool) -> bool:
 	return true
 
-func interact(_actor: Node2D, _tool: Node2D):
+func interact(_actor: Node2D, _tool: Tool):
 	pass
