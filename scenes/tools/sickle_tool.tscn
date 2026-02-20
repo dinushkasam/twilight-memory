@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://d1onfidedi463"]
+
+[ext_resource type="Script" uid="uid://dl1m3hy2kbxl2" path="res://scripts/tools/sickle_tool.gd" id="1_gsg0y"]
+
+[node name="SickleTool" type="Node2D" unique_id=1465297511]
+script = ExtResource("1_gsg0y")
+metadata/_custom_type_script = "uid://llvw8mjwibhm"

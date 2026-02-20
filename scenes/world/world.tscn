@@ -13,7 +13,11 @@
 [ext_resource type="Texture2D" uid="uid://rw7pybpuxyr7" path="res://assets/sprites/tiles/Base-blocks.png" id="4_v5dby"]
 [ext_resource type="Texture2D" uid="uid://357wrcnl6yw1" path="res://assets/sprites/tiles/crop-block.png" id="5_bq33v"]
 [ext_resource type="Script" uid="uid://dexvvu444lfa1" path="res://scripts/world/world_generator_component.gd" id="6_j2gmx"]
+[ext_resource type="Resource" uid="uid://ddpwgti3mr4a5" path="res://resources/trees/small_tree.tres" id="8_bt7bg"]
 [ext_resource type="Script" uid="uid://d0as7ovf0xmr2" path="res://scripts/world/interaction_manager.gd" id="8_umvgx"]
+[ext_resource type="Resource" uid="uid://daw1jumfhtig5" path="res://resources/trees/big_tree.tres" id="9_wbwoo"]
+[ext_resource type="Resource" uid="uid://chuplpswgfd54" path="res://resources/trees/small_bush.tres" id="10_tytul"]
+[ext_resource type="Resource" uid="uid://dmmvqqgjxusmy" path="res://resources/trees/big_bush.tres" id="11_t634p"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t5ptc"]
 resource_name = "base-blocks"
@@ -94,6 +98,10 @@ player_config = ExtResource("4_umvgx")
 script = ExtResource("4_5qq27")
 tree_scene = ExtResource("2_bq33v")
 grass_scene = ExtResource("3_j2gmx")
+small_tree_resource = ExtResource("8_bt7bg")
+big_tree_resource = ExtResource("9_wbwoo")
+small_bush_resource = ExtResource("10_tytul")
+big_bush_resource = ExtResource("11_t634p")
 
 [node name="InteractionManager" type="Node" parent="." unique_id=534289190]
 script = ExtResource("8_umvgx")

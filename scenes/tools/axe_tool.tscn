@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://dmf5c4700cm17"]
+
+[ext_resource type="Script" uid="uid://byd17o8a3poiu" path="res://scripts/tools/axe_tool.gd" id="1_l6f7i"]
+
+[node name="AxeTool" type="Node2D" unique_id=701030851]
+script = ExtResource("1_l6f7i")
+metadata/_custom_type_script = "uid://llvw8mjwibhm"

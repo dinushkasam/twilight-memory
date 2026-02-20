@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="TreeConfig" format=3 uid="uid://dmmvqqgjxusmy"]
+
+[ext_resource type="Script" uid="uid://bcarbetg1wxtv" path="res://scripts/configs/tree_config.gd" id="1_4aj2s"]
+
+[resource]
+script = ExtResource("1_4aj2s")
+animation_name = "big_bush"
+max_health = 40
+best_tool = Array[String](["sickle"])
+inefficient_tool = Array[String](["axe"])
+metadata/_custom_type_script = "uid://bcarbetg1wxtv"

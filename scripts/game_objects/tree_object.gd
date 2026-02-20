@@ -1,7 +1,7 @@
 extends StaticBody2D
 
 
-@export var tree_variant: TreeComponent.TreeVariants
+@export var tree_variant: TreeConfig
 @export var tree_component: TreeComponent
 
 
