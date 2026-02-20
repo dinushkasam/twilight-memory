@@ -22,5 +22,6 @@ func set_variant(config: TreeConfig):
 
 func hit_tree(damage: int):
 	current_health -= damage
+	print("tree hit damage: ", damage)
 	if current_health <= 0:
 		tree_died.emit()

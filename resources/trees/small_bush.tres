@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_fhju0")
 animation_name = "small_bush"
-max_health = 2
+max_health = 20
 best_tool = Array[String](["sickle"])
 inefficient_tool = Array[String](["axe"])
 metadata/_custom_type_script = "uid://bcarbetg1wxtv"

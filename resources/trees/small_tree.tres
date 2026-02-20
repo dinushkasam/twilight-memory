@@ -5,5 +5,6 @@
 [resource]
 script = ExtResource("1_8l0p7")
 animation_name = "small_tree"
+max_health = 45
 best_tool = Array[String](["axe"])
 metadata/_custom_type_script = "uid://bcarbetg1wxtv"
