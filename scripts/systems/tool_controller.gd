@@ -28,11 +28,13 @@ func equip_tool(index: int):
 		active_tool.queue_free()
 	
 	var new_tool_data = tools[index]
-	active_tool = new_tool_data.tool_scene.instantiate()
-	active_tool.data = new_tool_data
 	
-	add_child(active_tool)
-	
+	if new_tool_data:
+		active_tool = new_tool_data.tool_scene.instantiate()
+		active_tool.data = new_tool_data
+		
+		add_child(active_tool)
+		
 	tool_changed.emit(new_tool_data, index)
 
 func cycle_next():
@@ -43,12 +45,11 @@ func cycle_prev():
 	active_index = (active_index - 1 + max_tools) % max_tools
 	equip_tool(active_index)
 
-func use_tool(actor: Player, target_tile: Vector2i) -> bool:
-	if active_tool:
-		active_tool.use(actor, target_tile)
-		return true
-	else:
-		return false
+func is_tool_equipped() -> bool:
+	return true if active_tool else false
+
+func use_tool(actor: Player, target_tile: Vector2i):
+	active_tool.use(actor, target_tile)
 
 func add_tool(tool: ToolData, index: int):
 	if index < max_tools:

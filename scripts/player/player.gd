@@ -75,4 +75,7 @@ func get_direction_from_vector(v: Vector2) -> Direction:
 
 
 func _on_world_context_tile_clicked(coords: Vector2i) -> void:
-	world_context.interact(coords, self, null)
+	if tool_controller.is_tool_equipped():
+		tool_controller.use_tool(self, coords)
+	else:
+		world_context.interact(coords, self, null)
