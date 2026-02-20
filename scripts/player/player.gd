@@ -4,6 +4,7 @@ class_name Player
 @export var animation_tree: AnimationTree
 @export var player_state_machine: StateMachine
 @export var player_input_component: PlayerInputComponent
+@export var tool_controller: ToolController
 
 @export var player_direction: Direction
 @export var player_state: PlayerState

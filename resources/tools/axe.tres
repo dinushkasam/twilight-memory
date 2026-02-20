@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ToolData" format=3 uid="uid://b14l1cwtohvnv"]
+
+[ext_resource type="Script" uid="uid://caybb0710i8v1" path="res://scripts/tools/tool_data.gd" id="1_o1xek"]
+[ext_resource type="PackedScene" uid="uid://dmf5c4700cm17" path="res://scenes/tools/axe_tool.tscn" id="2_dkv6c"]
+
+[resource]
+script = ExtResource("1_o1xek")
+tool_name = "Axe"
+tool_scene = ExtResource("2_dkv6c")
+metadata/_custom_type_script = "uid://caybb0710i8v1"

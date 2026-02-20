@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://dx5i2tt3ij3ar"]
+
+[ext_resource type="Script" uid="uid://hkhxqgmmapit" path="res://scripts/tools/hoe_tool.gd" id="1_y3f3n"]
+
+[node name="HoeTool" type="Node2D" unique_id=1426552738]
+script = ExtResource("1_y3f3n")
+metadata/_custom_type_script = "uid://llvw8mjwibhm"

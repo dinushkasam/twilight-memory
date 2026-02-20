@@ -8,6 +8,11 @@
 [ext_resource type="Script" uid="uid://1l86kutuei71" path="res://scripts/player/state_machine/idle.gd" id="6_0owmy"]
 [ext_resource type="Script" uid="uid://hc3djtow3jbr" path="res://scripts/player/state_machine/walk.gd" id="7_0owmy"]
 [ext_resource type="Script" uid="uid://c1ain0o2g07k6" path="res://scripts/player/player_input_component.gd" id="8_qek5x"]
+[ext_resource type="Script" uid="uid://ba5hujlxbvayv" path="res://scripts/systems/tool_controller.gd" id="9_5gtgg"]
+[ext_resource type="Script" uid="uid://caybb0710i8v1" path="res://scripts/tools/tool_data.gd" id="10_h17s1"]
+[ext_resource type="Resource" uid="uid://b14l1cwtohvnv" path="res://resources/tools/axe.tres" id="11_gx1jg"]
+[ext_resource type="Resource" uid="uid://b3kuj8oroj7dh" path="res://resources/tools/hoe.tres" id="12_ugbui"]
+[ext_resource type="Resource" uid="uid://rap4310kkyd7" path="res://resources/tools/sickle.tres" id="13_fcs02"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gmlin"]
 size = Vector2(13.5, 6.125)
@@ -439,6 +444,9 @@ script = ExtResource("1_dovo2")
 animation_tree = NodePath("AnimationTree")
 player_state_machine = NodePath("PlayerStateMachine")
 player_input_component = NodePath("InputComponent")
+player_direction = null
+player_state = null
+last_facing_direction = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=670120201]
 texture_filter = 1
@@ -477,3 +485,7 @@ idle_state = NodePath("../Idle")
 
 [node name="InputComponent" type="Node" parent="." unique_id=1176874322]
 script = ExtResource("8_qek5x")
+
+[node name="ToolController" type="Node" parent="." unique_id=1047532299]
+script = ExtResource("9_5gtgg")
+tools = Array[ExtResource("10_h17s1")]([ExtResource("11_gx1jg"), ExtResource("12_ugbui"), ExtResource("13_fcs02"), null, null])
