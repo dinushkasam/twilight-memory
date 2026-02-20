@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("1_gwc0n")
+tool_name = "Sickle"
 tool_scene = ExtResource("2_575di")
 tool_tags = Array[String](["sickle"])
 tool_power = 7

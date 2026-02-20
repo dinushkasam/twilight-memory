@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("1_l863g")
+tool_name = "Hoe"
 tool_scene = ExtResource("2_cvp6w")
 tool_tags = Array[String](["hoe"])
 tool_power = 2

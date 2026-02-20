@@ -481,8 +481,9 @@ walk_state = NodePath("../Walk")
 script = ExtResource("7_0owmy")
 idle_state = NodePath("../Idle")
 
-[node name="InputComponent" type="Node" parent="." unique_id=1176874322]
+[node name="InputComponent" type="Node" parent="." unique_id=1176874322 node_paths=PackedStringArray("tool_controller")]
 script = ExtResource("8_qek5x")
+tool_controller = NodePath("../ToolController")
 
 [node name="ToolController" type="Node" parent="." unique_id=1047532299]
 script = ExtResource("9_5gtgg")

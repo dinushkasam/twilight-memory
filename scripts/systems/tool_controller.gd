@@ -2,8 +2,10 @@ extends Node
 class_name ToolController
 
 # Configs
+var configs: ConfigProvider
+
 @export var tools: Array[ToolData]
-var max_tools: int
+var max_tools: int = 10
 
 # Active variables
 var active_index = 0
@@ -15,8 +17,9 @@ signal tool_added(tool: ToolData, index: int)
 signal tool_removed(tool: ToolData, index: int)
 
 
-func init(hotbar_max_tools: int):
-	max_tools = hotbar_max_tools
+func init(configs_arg: ConfigProvider):
+	configs = configs_arg
+	max_tools = configs.player_config.hotbar_max_tools
 	tools.resize(max_tools)
 
 func _ready() -> void:
@@ -34,7 +37,10 @@ func equip_tool(index: int):
 		active_tool.data = new_tool_data
 		
 		add_child(active_tool)
-		
+	
+		print("Equipped slot [", index, "] tool: ", new_tool_data.tool_name)
+	else:
+		print("Equipped slot [", index, "] tool: none")
 	tool_changed.emit(new_tool_data, index)
 
 func cycle_next():
