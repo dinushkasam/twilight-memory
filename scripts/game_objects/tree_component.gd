@@ -3,9 +3,8 @@ class_name TreeComponent
 
 @export var sprite: AnimatedSprite2D
 
-@export var allow_pass_through := false
-@export var can_be_cut := false
-@export var health := 3
+var data: TreeConfig
+var current_health: int
 
 enum TreeVariants {
 	small_tree,
@@ -16,18 +15,12 @@ enum TreeVariants {
 
 signal tree_died
 
-func set_variant(variation: TreeVariants):
-	match variation:
-		TreeVariants.small_tree:
-			sprite.play("small_tree")
-		TreeVariants.big_tree:
-			sprite.play("big_tree")
-		TreeVariants.small_bush:
-			sprite.play("small_bush")
-		TreeVariants.big_bush:
-			sprite.play("big_bush")
+func set_variant(config: TreeConfig):
+	data = config
+	current_health = data.max_health
+	sprite.play(data.animation_name)
 
 func hit_tree(damage: int):
-	health -= damage
-	if health <= 0:
+	current_health -= damage
+	if current_health <= 0:
 		tree_died.emit()

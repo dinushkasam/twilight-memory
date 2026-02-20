@@ -7,4 +7,5 @@
 script = ExtResource("1_o1xek")
 tool_name = "Axe"
 tool_scene = ExtResource("2_dkv6c")
+tool_tags = Array[String](["axe"])
 metadata/_custom_type_script = "uid://caybb0710i8v1"

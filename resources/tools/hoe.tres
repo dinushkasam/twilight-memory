@@ -6,4 +6,5 @@
 [resource]
 script = ExtResource("1_l863g")
 tool_scene = ExtResource("2_cvp6w")
+tool_tags = Array[String](["hoe"])
 metadata/_custom_type_script = "uid://caybb0710i8v1"

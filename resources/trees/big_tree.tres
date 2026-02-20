@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="TreeConfig" format=3 uid="uid://daw1jumfhtig5"]
+
+[ext_resource type="Script" uid="uid://bcarbetg1wxtv" path="res://scripts/configs/tree_config.gd" id="1_1kboj"]
+
+[resource]
+script = ExtResource("1_1kboj")
+animation_name = "big_tree"
+max_health = 5
+best_tool = Array[String](["axe"])
+metadata/_custom_type_script = "uid://bcarbetg1wxtv"
