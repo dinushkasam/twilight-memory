@@ -4,6 +4,7 @@ class_name Player
 @export var animation_tree: AnimationTree
 @export var player_state_machine: StateMachine
 @export var player_input_component: PlayerInputComponent
+@export var tool_controller: ToolController
 
 @export var player_direction: Direction
 @export var player_state: PlayerState
@@ -20,16 +21,22 @@ var configs: ConfigProvider
 func init(context: WorldContext, config_provider: ConfigProvider):
 	world_context = context
 	configs = config_provider
+	
+	# Init child dependencies 
+	tool_controller.init(configs)
+	player_input_component.init(world_context)
+	player_state_machine.init(self)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	player_input_component.init(world_context)
-	player_state_machine.init(self)
 	add_to_group("character", true)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	player_state_machine.process_physics(delta)
+
+func _input(event: InputEvent) -> void:
+	player_input_component.process_input(event)
 
 func _unhandled_input(event: InputEvent) -> void:
 	player_state_machine.process_input(event)
@@ -74,4 +81,7 @@ func get_direction_from_vector(v: Vector2) -> Direction:
 
 
 func _on_world_context_tile_clicked(coords: Vector2i) -> void:
-	world_context.interact(coords, self, null)
+	if tool_controller.is_tool_equipped():
+		tool_controller.use_tool(self, coords)
+	else:
+		world_context.interact(coords, self, null)

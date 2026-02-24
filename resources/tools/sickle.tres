@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ToolData" format=3 uid="uid://rap4310kkyd7"]
+
+[ext_resource type="Script" uid="uid://caybb0710i8v1" path="res://scripts/tools/tool_data.gd" id="1_gwc0n"]
+[ext_resource type="PackedScene" uid="uid://d1onfidedi463" path="res://scenes/tools/sickle_tool.tscn" id="2_575di"]
+
+[resource]
+script = ExtResource("1_gwc0n")
+tool_name = "Sickle"
+tool_scene = ExtResource("2_575di")
+tool_tags = Array[String](["sickle"])
+tool_power = 7
+metadata/_custom_type_script = "uid://caybb0710i8v1"

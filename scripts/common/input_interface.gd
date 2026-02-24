@@ -31,6 +31,11 @@ func left_mouse_clicked(event: InputEvent) -> bool:
 			return true
 	return false
 
+func wants_cycle_next_tool(event: InputEvent) -> bool:
+	return event.is_action_pressed("cycle_next_tool")
+
+func wants_cycle_prev_tool(event: InputEvent) -> bool:
+	return event.is_action_pressed("cycle_prev_tool")
 
 func process_input(_event: InputEvent) -> void:
 	pass

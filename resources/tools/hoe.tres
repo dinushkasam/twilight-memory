@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ToolData" format=3 uid="uid://b3kuj8oroj7dh"]
+
+[ext_resource type="Script" uid="uid://caybb0710i8v1" path="res://scripts/tools/tool_data.gd" id="1_l863g"]
+[ext_resource type="PackedScene" uid="uid://dx5i2tt3ij3ar" path="res://scenes/tools/hoe_tool.tscn" id="2_cvp6w"]
+
+[resource]
+script = ExtResource("1_l863g")
+tool_name = "Hoe"
+tool_scene = ExtResource("2_cvp6w")
+tool_tags = Array[String](["hoe"])
+tool_power = 2
+metadata/_custom_type_script = "uid://caybb0710i8v1"

@@ -39,3 +39,11 @@
 
 ## 2026-02-18
 - Created the interaction system.
+
+## 2026-02-20
+- Created some basic tool sprites.
+- Created the tool resources, scenes and tool controller.
+- Q and E will cycle through the tools in the tool controller.
+
+## 2026-02-23
+- Created a sequence diagram for the interaction system with an example of hitting a tree with an axe.
