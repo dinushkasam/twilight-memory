@@ -13,6 +13,7 @@
 [ext_resource type="Resource" uid="uid://b14l1cwtohvnv" path="res://resources/tools/axe.tres" id="11_gx1jg"]
 [ext_resource type="Resource" uid="uid://b3kuj8oroj7dh" path="res://resources/tools/hoe.tres" id="12_ugbui"]
 [ext_resource type="Resource" uid="uid://rap4310kkyd7" path="res://resources/tools/sickle.tres" id="13_fcs02"]
+[ext_resource type="Texture2D" uid="uid://c71g2cwpv8o1e" path="res://assets/sprites/tiles/tools/tools-spritesheet.png" id="14_ugbui"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gmlin"]
 size = Vector2(13.5, 6.125)
@@ -64,6 +65,39 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [1]
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ToolSprite:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ToolSprite:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-71.695, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ToolSprite:position:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-12.105, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
 }
 
 [sub_resource type="Animation" id="Animation_75vfm"]
@@ -192,6 +226,44 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [&"idle_west"]
+}
+
+[sub_resource type="Animation" id="Animation_3j4b4"]
+resource_name = "axe_idle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ToolSprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -0.06, -0.16666667, 0, 0.16666667, 0, 0, -0.33333334, 0, 0, 0),
+"times": PackedFloat32Array(0, 1, 2)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ToolSprite:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-71.695, -0.25, 0, 0.25, 0, -74.87, -0.16666667, 0, 0, 0, -71.695, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1, 2)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ToolSprite:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-12.105, -0.25, 0, 0.25, 0, -12.105, -0.16666667, 0, 0, 0, -12.105, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1, 2)
 }
 
 [sub_resource type="Animation" id="Animation_gx1jg"]
@@ -429,6 +501,7 @@ _data = {
 &"idle_south_east": SubResource("Animation_h17s1"),
 &"idle_south_west": SubResource("Animation_je7p5"),
 &"idle_west": SubResource("Animation_fm80t"),
+&"tool_idle": SubResource("Animation_3j4b4"),
 &"walk_east": SubResource("Animation_gx1jg"),
 &"walk_north": SubResource("Animation_ugbui"),
 &"walk_north_east": SubResource("Animation_fcs02"),
@@ -438,6 +511,45 @@ _data = {
 &"walk_south_west": SubResource("Animation_lgqa7"),
 &"walk_west": SubResource("Animation_8ydkj")
 }
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fcs02"]
+atlas = ExtResource("14_ugbui")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_myrg7"]
+atlas = ExtResource("14_ugbui")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kvlxm"]
+atlas = ExtResource("14_ugbui")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uf5tr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fcs02")
+}],
+"loop": true,
+"name": &"axe",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_myrg7")
+}],
+"loop": true,
+"name": &"hoe",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kvlxm")
+}],
+"loop": true,
+"name": &"sickle",
+"speed": 5.0
+}]
 
 [node name="Player" type="CharacterBody2D" unique_id=1884763180 node_paths=PackedStringArray("animation_tree", "player_state_machine", "player_input_component", "tool_controller")]
 script = ExtResource("1_dovo2")
@@ -485,6 +597,14 @@ idle_state = NodePath("../Idle")
 script = ExtResource("8_qek5x")
 tool_controller = NodePath("../ToolController")
 
-[node name="ToolController" type="Node" parent="." unique_id=1047532299]
+[node name="ToolController" type="Node" parent="." unique_id=1047532299 node_paths=PackedStringArray("animation_player", "tool_sprite")]
 script = ExtResource("9_5gtgg")
+animation_player = NodePath("../AnimationPlayer")
+tool_sprite = NodePath("../ToolSprite")
 tools = Array[ExtResource("10_h17s1")]([ExtResource("11_gx1jg"), ExtResource("12_ugbui"), ExtResource("13_fcs02"), null, null])
+
+[node name="ToolSprite" type="AnimatedSprite2D" parent="." unique_id=241738329]
+texture_filter = 1
+position = Vector2(-12.105, -71.695)
+sprite_frames = SubResource("SpriteFrames_uf5tr")
+animation = &"axe"

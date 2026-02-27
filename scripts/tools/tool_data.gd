@@ -2,7 +2,7 @@ extends Resource
 class_name ToolData
 
 @export var tool_name: String
-@export var icon: Texture2D
+@export var animation: String
 @export var tool_scene: PackedScene
 @export var tool_tags: Array[String]
 

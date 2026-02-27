@@ -47,5 +47,7 @@ func interact(actor: Node2D, tool: Tool, interaction_type: int):
 			total_damage = base_damage * tree_component.data.inefficient_tool_multiplier
 		InteractionType.BARE_HANDS:
 			total_damage = base_damage * tree_component.data.bare_hands_multiplier
+		_:
+			return
 	
 	tree_component.hit_tree(total_damage)
