@@ -5,17 +5,17 @@ extends InteractableInterface
 
 
 # Overrides
-func can_interact(actor: Node2D, tool: Tool) -> int:
-	var is_player = actor is Player
+func can_interact(args: InteractionArgs) -> int:
+	var is_player = args.actor is Player
 	
 	if not is_player:
 		return InteractionType.NONE
 
-	if tool == null:
+	if args.tool == null:
 		return InteractionType.BARE_HANDS
 	
-	var is_sickle = "sickle" in tool.data.tool_tags
+	var is_sickle = "sickle" in args.tool.data.tool_tags
 	return InteractionType.BEST_TOOL if is_sickle else InteractionType.NONE
 
-func interact(_actor: Node2D, _tool: Tool, _interaction_type: int):
+func interact(_action: InteractionAction):
 	grass_component.hit_grass()

@@ -7,6 +7,7 @@ var game_objects: Node2D
 # Game object scenes
 @export var tree_scene: PackedScene
 @export var grass_scene: PackedScene
+@export var plot_scene: PackedScene
 
 # Tree configs
 @export var small_tree_resource: TreeConfig
@@ -32,6 +33,11 @@ func spawn_tree(position: Vector2, variant: TreeComponent.TreeVariants):
 	tree.set("position", position)
 	tree.set("tree_variant", config)
 	game_objects.add_child(tree)
+
+func spawn_plot(position: Vector2):
+	var plot = plot_scene.instantiate()
+	plot.set("position", position)
+	game_objects.add_child(plot)
 
 
 # Helper function
