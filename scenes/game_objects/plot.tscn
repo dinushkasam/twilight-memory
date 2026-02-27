@@ -3,6 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://357wrcnl6yw1" path="res://assets/sprites/tiles/crop-block.png" id="1_4mrub"]
 
 [node name="Plot" type="Area2D" unique_id=2010382839]
+z_index = -1
+y_sort_enabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=394615048]
 texture_filter = 1
