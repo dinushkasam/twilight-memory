@@ -47,3 +47,6 @@
 
 ## 2026-02-23
 - Created a sequence diagram for the interaction system with an example of hitting a tree with an axe.
+
+## 2026-02-27
+- Added basic tool display.

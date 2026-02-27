@@ -1,6 +1,10 @@
 extends Node
 class_name ToolController
 
+# Tool display
+@export var animation_player: AnimationPlayer
+@export var tool_sprite: AnimatedSprite2D
+
 # Configs
 var configs: ConfigProvider
 
@@ -24,6 +28,7 @@ func init(configs_arg: ConfigProvider):
 
 func _ready() -> void:
 	equip_tool(active_index)
+	animation_player.play("tool_idle")
 
 
 func equip_tool(index: int):
@@ -36,11 +41,16 @@ func equip_tool(index: int):
 		active_tool = new_tool_data.tool_scene.instantiate()
 		active_tool.data = new_tool_data
 		
+		# Tool sprite
+		tool_sprite.scale = Vector2(1,1)
+		tool_sprite.play(active_tool.data.animation)
+		
 		add_child(active_tool)
 	
 		print("Equipped slot [", index, "] tool: ", new_tool_data.tool_name)
 	else:
 		print("Equipped slot [", index, "] tool: none")
+		tool_sprite.scale = Vector2(0,0)
 	tool_changed.emit(new_tool_data, index)
 
 func cycle_next():

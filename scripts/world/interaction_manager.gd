@@ -27,5 +27,5 @@ func interact_at_tile(coords: Vector2i, actor: Node2D, tool: Node2D):
 				if best == null or interactable.interaction_priority > best.interaction_priority:
 					best = interactable
 	
-	if best:
+	if best and interaction_type != InteractableInterface.InteractionType.NONE:
 		best.interact(actor, tool, interaction_type)
