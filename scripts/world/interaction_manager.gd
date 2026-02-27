@@ -35,9 +35,10 @@ func interact_at_tile(coords: Vector2i, actor: Node2D, tool: Node2D):
 					best = interactable
 	
 	# If no physics interactables, check for ground interactions
-	if best == null:
+	if results.size() == 0 and best == null:
 		interaction_type = ground_interactable_component.can_interact(interact_args)
-		best = ground_interactable_component
+		if interaction_type != InteractableInterface.InteractionType.NONE:
+			best = ground_interactable_component
 	
 	if best and interaction_type != InteractableInterface.InteractionType.NONE:
 		var interact_action = InteractableInterface.InteractionAction.new(

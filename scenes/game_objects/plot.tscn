@@ -4,13 +4,13 @@
 
 [node name="Plot" type="Area2D" unique_id=2010382839]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=472185584]
-polygon = PackedVector2Array(-31, 0, 0, -16, 32, 0, 0, 16)
-
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=394615048]
 texture_filter = 1
 texture = ExtResource("1_4mrub")
 offset = Vector2(0, -16)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=472185584]
+polygon = PackedVector2Array(-31, 0, 0, -16, 32, 0, 0, 16)
 
 [node name="InteractableComponent" type="Node" parent="." unique_id=748268907]
 
