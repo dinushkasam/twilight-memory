@@ -11,13 +11,13 @@
 [ext_resource type="Script" uid="uid://43wdl07r3s23" path="res://scripts/world/world_input_component.gd" id="4_t5ptc"]
 [ext_resource type="Resource" uid="uid://bq13ykqvvpumt" path="res://resources/player_config.tres" id="4_umvgx"]
 [ext_resource type="Texture2D" uid="uid://rw7pybpuxyr7" path="res://assets/sprites/tiles/Base-blocks.png" id="4_v5dby"]
-[ext_resource type="Texture2D" uid="uid://357wrcnl6yw1" path="res://assets/sprites/tiles/crop-block.png" id="5_bq33v"]
 [ext_resource type="Script" uid="uid://dexvvu444lfa1" path="res://scripts/world/world_generator_component.gd" id="6_j2gmx"]
 [ext_resource type="Resource" uid="uid://ddpwgti3mr4a5" path="res://resources/trees/small_tree.tres" id="8_bt7bg"]
 [ext_resource type="Script" uid="uid://d0as7ovf0xmr2" path="res://scripts/world/interaction_manager.gd" id="8_umvgx"]
 [ext_resource type="Resource" uid="uid://daw1jumfhtig5" path="res://resources/trees/big_tree.tres" id="9_wbwoo"]
 [ext_resource type="Resource" uid="uid://chuplpswgfd54" path="res://resources/trees/small_bush.tres" id="10_tytul"]
 [ext_resource type="Resource" uid="uid://dmmvqqgjxusmy" path="res://resources/trees/big_bush.tres" id="11_t634p"]
+[ext_resource type="Script" uid="uid://cmstbpmhkio7g" path="res://scripts/world/ground_interactable_component.gd" id="16_wbwoo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t5ptc"]
 resource_name = "base-blocks"
@@ -43,12 +43,6 @@ texture_region_size = Vector2i(64, 64)
 0:1/0/texture_origin = Vector2i(0, -16)
 0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, 0, 0, -16, 32, 0, 0, 16)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gb53w"]
-resource_name = "crop-block"
-texture = ExtResource("5_bq33v")
-texture_region_size = Vector2i(64, 64)
-0:1/0 = 0
-
 [sub_resource type="TileSet" id="TileSet_1fp7r"]
 tile_shape = 1
 tile_layout = 5
@@ -56,7 +50,6 @@ tile_offset_axis = 1
 tile_size = Vector2i(64, 32)
 physics_layer_0/collision_layer = 1
 sources/2 = SubResource("TileSetAtlasSource_t5ptc")
-sources/5 = SubResource("TileSetAtlasSource_gb53w")
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_1fp7r"]
 noise_type = 3
@@ -103,8 +96,9 @@ big_tree_resource = ExtResource("9_wbwoo")
 small_bush_resource = ExtResource("10_tytul")
 big_bush_resource = ExtResource("11_t634p")
 
-[node name="InteractionManager" type="Node" parent="." unique_id=534289190]
+[node name="InteractionManager" type="Node" parent="." unique_id=534289190 node_paths=PackedStringArray("ground_interactable_component")]
 script = ExtResource("8_umvgx")
+ground_interactable_component = NodePath("../GroundTileMapLayer/InteractableComponent")
 
 [node name="WorldContext" type="Node2D" parent="." unique_id=755016948]
 script = ExtResource("2_1yooq")
@@ -115,6 +109,12 @@ z_index = -1
 y_sort_enabled = true
 texture_filter = 1
 tile_set = SubResource("TileSet_1fp7r")
+
+[node name="InteractableComponent" type="Node" parent="GroundTileMapLayer" unique_id=386726475 node_paths=PackedStringArray("ground_tile_map_layer", "game_object_manager", "parent")]
+script = ExtResource("16_wbwoo")
+ground_tile_map_layer = NodePath("..")
+game_object_manager = NodePath("../../GameObjectManager")
+parent = NodePath("..")
 
 [node name="GroundHighlightTileMapLayer" type="TileMapLayer" parent="." unique_id=564940117]
 unique_name_in_owner = true
