@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bbfbvhfgtv2lq"]
 
 [ext_resource type="Texture2D" uid="uid://bolybyyq5mc73" path="res://assets/sprites/tiles/crops/crop-sprite-sheet.png" id="1_js6be"]
+[ext_resource type="Script" uid="uid://covpe4mdm2svg" path="res://scripts/crops/crop_component.gd" id="2_brnrd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_brnrd"]
 atlas = ExtResource("1_js6be")
@@ -200,3 +201,13 @@ texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_oi1kv")
 animation = &"carrot"
 offset = Vector2(0, -16)
+
+[node name="CropComponent" type="Node" parent="." unique_id=1830439624 node_paths=PackedStringArray("sprite", "timer")]
+script = ExtResource("2_brnrd")
+sprite = NodePath("../AnimatedSprite2D")
+timer = NodePath("../Timer")
+metadata/_custom_type_script = "uid://covpe4mdm2svg"
+
+[node name="Timer" type="Timer" parent="." unique_id=1217446678]
+
+[connection signal="timeout" from="Timer" to="CropComponent" method="_on_timer_timeout"]
