@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c3iq4xxgnui6n"]
 
 [ext_resource type="Texture2D" uid="uid://357wrcnl6yw1" path="res://assets/sprites/tiles/crop-block.png" id="1_4mrub"]
+[ext_resource type="Script" uid="uid://sojprt17bacp" path="res://scripts/game_objects/interactibles/interactible_plot.gd" id="2_rajy0"]
 
 [node name="Plot" type="Area2D" unique_id=2010382839]
 z_index = -1
@@ -15,5 +16,6 @@ offset = Vector2(0, -16)
 polygon = PackedVector2Array(-31, 0, 0, -16, 32, 0, 0, 16)
 
 [node name="InteractableComponent" type="Node" parent="." unique_id=748268907]
+script = ExtResource("2_rajy0")
 
 [node name="PlotComponent" type="Node" parent="." unique_id=1774966092]

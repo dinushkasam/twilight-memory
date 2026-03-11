@@ -13,6 +13,7 @@
 [ext_resource type="Resource" uid="uid://b14l1cwtohvnv" path="res://resources/tools/axe.tres" id="11_gx1jg"]
 [ext_resource type="Resource" uid="uid://b3kuj8oroj7dh" path="res://resources/tools/hoe.tres" id="12_ugbui"]
 [ext_resource type="Resource" uid="uid://rap4310kkyd7" path="res://resources/tools/sickle.tres" id="13_fcs02"]
+[ext_resource type="Resource" uid="uid://cs8o6rta31w0t" path="res://resources/items/carrot_seed.tres" id="14_fcs02"]
 [ext_resource type="Texture2D" uid="uid://c71g2cwpv8o1e" path="res://assets/sprites/tiles/tools/tools-spritesheet.png" id="14_ugbui"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gmlin"]
@@ -601,7 +602,7 @@ tool_controller = NodePath("../ToolController")
 script = ExtResource("9_5gtgg")
 animation_player = NodePath("../AnimationPlayer")
 tool_sprite = NodePath("../ToolSprite")
-tools = Array[ExtResource("10_h17s1")]([ExtResource("11_gx1jg"), ExtResource("12_ugbui"), ExtResource("13_fcs02"), null, null])
+tools = Array[ExtResource("10_h17s1")]([ExtResource("11_gx1jg"), ExtResource("12_ugbui"), ExtResource("13_fcs02"), ExtResource("14_fcs02"), null])
 
 [node name="ToolSprite" type="AnimatedSprite2D" parent="." unique_id=241738329]
 texture_filter = 1
