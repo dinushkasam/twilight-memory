@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ToolData" format=3 uid="uid://cs8o6rta31w0t"]
+
+[ext_resource type="Script" uid="uid://caybb0710i8v1" path="res://scripts/tools/tool_data.gd" id="1_1ijld"]
+[ext_resource type="PackedScene" uid="uid://bbfbvhfgtv2lq" path="res://scenes/game_objects/crop.tscn" id="2_ro0gi"]
+[ext_resource type="Resource" uid="uid://crb8eytlbiquo" path="res://resources/crops/carrot.tres" id="2_sumqt"]
+[ext_resource type="PackedScene" uid="uid://c8rn16wv66ndj" path="res://scenes/tools/tool_scene.tscn" id="3_sumqt"]
+
+[resource]
+script = ExtResource("1_1ijld")
+tool_name = "Carrot Seed Bag"
+animation = "carrot_seed_bag"
+tool_scene = ExtResource("3_sumqt")
+tool_tags = Array[String](["seed", "carrot_seed_box"])
+consumable = true
+spawn_entity = ExtResource("2_ro0gi")
+spawn_args = {
+"crop_type": ExtResource("2_sumqt")
+}
+metadata/_custom_type_script = "uid://caybb0710i8v1"
