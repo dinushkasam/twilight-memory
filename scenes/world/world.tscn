@@ -72,24 +72,25 @@ width = 64
 height = 64
 noise = SubResource("FastNoiseLite_1yooq")
 
-[node name="World" type="Node2D" unique_id=715088121 node_paths=PackedStringArray("world_input_component", "world_generator_component", "world_context", "config_provider", "game_obj_manager", "ground", "highlight")]
+[node name="World" type="Node2D" unique_id=715088121 node_paths=PackedStringArray("world_input_component", "world_generator_component", "config_provider", "game_obj_manager", "ground", "highlight")]
 y_sort_enabled = true
 script = ExtResource("2_sl2e5")
 world_input_component = NodePath("WorldInputComponent")
 world_generator_component = NodePath("WorldGeneratorComponent")
-world_context = NodePath("WorldContext")
 config_provider = NodePath("ConfigProvider")
 game_obj_manager = NodePath("GameObjectManager")
 ground = NodePath("GroundTileMapLayer")
 highlight = NodePath("GroundHighlightTileMapLayer")
-
-[node name="ConfigProvider" type="Node" parent="." unique_id=378685759]
-script = ExtResource("2_gb53w")
 game_config = ExtResource("3_srmg5")
 player_config = ExtResource("4_umvgx")
 
-[node name="GameObjectManager" type="Node2D" parent="." unique_id=998998708]
+[node name="ConfigProvider" type="Node" parent="." unique_id=378685759]
+script = ExtResource("2_gb53w")
+
+[node name="GameObjectManager" type="Node2D" parent="." unique_id=998998708 node_paths=PackedStringArray("game_objects", "crop_layer")]
 script = ExtResource("4_5qq27")
+game_objects = NodePath("../GameObjects")
+crop_layer = NodePath("../CropLayer")
 tree_scene = ExtResource("2_bq33v")
 grass_scene = ExtResource("3_j2gmx")
 plot_scene = ExtResource("8_wbwoo")
@@ -127,6 +128,9 @@ texture_filter = 1
 tile_set = SubResource("TileSet_1fp7r")
 
 [node name="GameObjects" type="Node2D" parent="." unique_id=281104463]
+y_sort_enabled = true
+
+[node name="CropLayer" type="Node2D" parent="." unique_id=1213965071]
 y_sort_enabled = true
 
 [node name="Ysort" type="Node2D" parent="." unique_id=342279187]

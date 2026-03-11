@@ -1,5 +1,4 @@
 extends Node2D
-class_name WorldContext
 
 # Global states
 var ground: TileMapLayer
@@ -24,8 +23,6 @@ func init(
 	game_object_manager = game_obj_mgr_arg
 	highlight = highlight_arg
 	interaction_manager = interaction_mgr_arg
-	
-	interaction_manager.world = self
 
 
 # Tile Management

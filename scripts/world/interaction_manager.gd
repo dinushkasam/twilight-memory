@@ -1,14 +1,13 @@
 extends Node
 class_name InteractionManager
 
-var world: WorldContext
 @export var ground_interactable_component: InteractableInterface
 
 
 func interact_at_tile(coords: Vector2i, actor: Node2D, tool: Node2D):
-	var pos = world.ground.map_to_local(coords)
+	var pos = WorldContext.ground.map_to_local(coords)
 	
-	var space = world.get_world_2d().direct_space_state
+	var space = WorldContext.get_world_2d().direct_space_state
 	var query = PhysicsPointQueryParameters2D.new()
 	query.position = pos
 	query.collide_with_bodies = true

@@ -1,10 +1,14 @@
 extends Node
-class_name ConfigProvider
 
 # Global config handler
 
 # World configs
-@export var game_config: GameConfig
+var game_config: GameConfig
 
 # Player configs
-@export var player_config: PlayerConfig
+var player_config: PlayerConfig
+
+
+func init(game_conf: GameConfig, player_conf: PlayerConfig):
+	self.game_config = game_conf
+	self.player_config = player_conf

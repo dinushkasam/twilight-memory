@@ -9,7 +9,8 @@ enum InteractionType {
 	BARE_HANDS,
 	BEST_TOOL,
 	INEFFICIENT_TOOL,
-	PLOW
+	PLOW,
+	PLANT_SEED
 }
 
 class InteractionArgs:

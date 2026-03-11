@@ -19,6 +19,11 @@ run/main_scene="uid://bcfjxy7im26cv"
 config/features=PackedStringArray("4.6", "Mobile")
 config/icon="res://icon.svg"
 
+[autoload]
+
+WorldContext="*uid://dqmvewxjk35kd"
+ConfigProvider="*uid://c2r556vky6dkn"
+
 [input]
 
 ui_left={

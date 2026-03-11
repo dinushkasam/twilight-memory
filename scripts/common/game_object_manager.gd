@@ -2,7 +2,8 @@ extends Node
 class_name GameObjectManager
 
 # Node2d holding all game objects
-var game_objects: Node2D
+@export var game_objects: Node2D
+@export var crop_layer: Node2D
 
 # Game object scenes
 @export var tree_scene: PackedScene
@@ -14,10 +15,6 @@ var game_objects: Node2D
 @export var big_tree_resource: TreeConfig
 @export var small_bush_resource: TreeConfig
 @export var big_bush_resource: TreeConfig
-
-# Need to initialize the manager
-func init(node: Node2D):
-	game_objects = node
 
 
 # Object spawn functions
@@ -38,6 +35,14 @@ func spawn_plot(position: Vector2):
 	var plot = plot_scene.instantiate()
 	plot.set("position", position)
 	game_objects.add_child(plot)
+
+func spawn_entity(entity: Node2D, position: Vector2):
+	entity.set("position", position)
+	game_objects.add_child(entity)
+
+func spawn_crop(crop: Crop, position: Vector2):
+	crop.set("position", position)
+	crop_layer.add_child(crop)
 
 
 # Helper function

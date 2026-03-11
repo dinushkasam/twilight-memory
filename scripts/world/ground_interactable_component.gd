@@ -35,8 +35,7 @@ func can_interact(args: InteractionArgs) -> int:
 func interact(action: InteractionAction):
 	match action.interaction_type:
 		InteractionType.PLOW:
-			var pos = ground_tile_map_layer.map_to_local(action.args.coords)
-			game_object_manager.spawn_plot(pos)
+			game_object_manager.spawn_plot(action.args.position)
 		_:
 			return
 			
