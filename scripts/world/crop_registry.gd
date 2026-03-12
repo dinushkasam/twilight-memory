@@ -2,7 +2,7 @@ extends Node2D
 class_name CropRegistry
 
 
-var crop_by_tile := {}
+var crop_by_tile: Dictionary[Vector2i, GameObjectComponent] = {}
 var next_id: int = 1
 
 
