@@ -69,7 +69,7 @@ func get_direction_from_vector(v: Vector2) -> Direction:
 		return Direction.south_west
 
 
-func _on_world_context_tile_clicked(coords: Vector2i) -> void:
+func _on_world_input_component_tile_clicked(coords: Vector2i) -> void:
 	if tool_controller.is_tool_equipped():
 		tool_controller.use_tool(self, coords)
 	else:

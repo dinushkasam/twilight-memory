@@ -152,4 +152,4 @@ script = ExtResource("6_j2gmx")
 world_seed = SubResource("NoiseTexture2D_6m72w")
 object_seed = SubResource("NoiseTexture2D_gb53w")
 
-[connection signal="tile_clicked" from="WorldContext" to="Ysort/Player" method="_on_world_context_tile_clicked"]
+[connection signal="tile_clicked" from="WorldInputComponent" to="Ysort/Player" method="_on_world_input_component_tile_clicked"]

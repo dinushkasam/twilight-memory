@@ -16,6 +16,9 @@ class_name GameObjectManager
 @export var small_bush_resource: TreeConfig
 @export var big_bush_resource: TreeConfig
 
+# Signals
+@warning_ignore("unused_signal")
+signal object_spawned(node: Node)
 
 # Object spawn functions
 func spawn_grass(position: Vector2, variant: GrassComponent.GrassVariants):

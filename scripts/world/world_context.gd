@@ -7,11 +7,6 @@ var game_object_manager: GameObjectManager
 var highlighted_cell: Vector2i
 var interaction_manager: InteractionManager
 
-# Signals
-@warning_ignore("unused_signal")
-signal tile_clicked(coords: Vector2i)
-@warning_ignore("unused_signal")
-signal object_spawned(node: Node)
 
 func init(
 	ground_arg: TileMapLayer,

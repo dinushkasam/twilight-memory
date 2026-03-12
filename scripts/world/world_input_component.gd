@@ -40,7 +40,7 @@ func handle_camera_zoom_out():
 func handle_left_click(event):
 	if super.left_mouse_clicked(event):
 		if WorldContext.ground.get_cell_source_id(WorldContext.highlighted_cell) != -1:
-				WorldContext.tile_clicked.emit(WorldContext.highlighted_cell)
+			tile_clicked.emit(WorldContext.highlighted_cell)
 
 func handle_cell_hover():
 	var cell := WorldContext.get_hovered_cell()

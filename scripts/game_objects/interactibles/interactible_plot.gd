@@ -32,5 +32,6 @@ func interact(action: InteractionAction):
 			
 			var pos = WorldContext.ground.map_to_local(action.args.coords)
 			WorldContext.game_object_manager.spawn_crop(crop, pos)
+			print("planted")
 		_:
 			return

@@ -5,3 +5,7 @@
 - Changed the world context and config provider usage to use the autoloader.
 - Implemented the seed box for carrot for initial testing.
 - Implemented the interatable component for the plot game object.
+
+## 2026-03-12
+- Finished the crop planing tool interaction.
+- Tested crop stage advancement.
