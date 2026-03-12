@@ -6,18 +6,18 @@ var highlight: TileMapLayer
 var game_object_manager: GameObjectManager
 var highlighted_cell: Vector2i
 var interaction_manager: InteractionManager
+var game_object_registry: GameObjectRegistry
+var crop_registry: CropRegistry
 
 
-func init(
-	ground_arg: TileMapLayer,
-	game_obj_mgr_arg: GameObjectManager,
-	highlight_arg: TileMapLayer,
-	interaction_mgr_arg: InteractionManager
-):
-	ground = ground_arg
-	game_object_manager = game_obj_mgr_arg
-	highlight = highlight_arg
-	interaction_manager = interaction_mgr_arg
+
+func init(world: Node):
+	ground = world.get_node("GroundTileMapLayer")
+	game_object_manager = world.get_node("GameObjectManager")
+	highlight = world.get_node("GroundHighlightTileMapLayer")
+	interaction_manager = world.get_node("InteractionManager")
+	game_object_registry = world.get_node("GameObjectRegistry")
+	crop_registry = world.get_node("CropRegistry")
 
 
 # Tile Management
@@ -36,15 +36,30 @@ func get_grid_position(node: Node2D) -> Vector2i:
 # Object Manager
 func spawn_grass(coords: Vector2i, variant: GrassComponent.GrassVariants):
 	game_object_manager.spawn_grass(
-		ground.map_to_local(coords),
+		coords,
 		variant
 	)
 
 func spawn_tree(coords: Vector2i, variant: TreeComponent.TreeVariants):
 	game_object_manager.spawn_tree(
-		ground.map_to_local(coords),
+		coords,
 		variant
 	)
+
+func spawn_entity(entity: Node2D, coords: Vector2i):
+	game_object_manager.spawn_entity(
+		entity,
+		coords
+	)
+
+func spawn_crop(crop: Crop, coords: Vector2i):
+	game_object_manager.spawn_crop(
+		crop,
+		coords
+	)
+
+func spawn_plot(coords: Vector2i):
+	game_object_manager.spawn_plot(coords)
 
 
 # Interaction Manager

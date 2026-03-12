@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://yik4803sf2fh" path="res://scripts/game_objects/grass_object.gd" id="1_qkjbx"]
 [ext_resource type="Script" uid="uid://bgc21hyw0wa2w" path="res://scripts/game_objects/grass_component.gd" id="2_tej3y"]
 [ext_resource type="Script" uid="uid://dt1oqq2o6e8fh" path="res://scripts/game_objects/interactibles/interactible_grass.gd" id="4_wrfkr"]
+[ext_resource type="Script" uid="uid://bbvdll3k863im" path="res://scripts/game_objects/game_object_component.gd" id="5_hwesp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tej3y"]
 atlas = ExtResource("1_pmbd0")
@@ -67,6 +68,11 @@ collision = NodePath("../CollisionPolygon2D")
 script = ExtResource("4_wrfkr")
 grass_component = NodePath("../GrassComponent")
 parent = NodePath("..")
+
+[node name="GameObjectComponent" type="Node2D" parent="." unique_id=343339153 node_paths=PackedStringArray("parent")]
+script = ExtResource("5_hwesp")
+parent = NodePath("..")
+metadata/_custom_type_script = "uid://bbvdll3k863im"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

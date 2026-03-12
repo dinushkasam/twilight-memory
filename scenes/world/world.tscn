@@ -19,6 +19,8 @@
 [ext_resource type="Resource" uid="uid://chuplpswgfd54" path="res://resources/trees/small_bush.tres" id="10_tytul"]
 [ext_resource type="Resource" uid="uid://dmmvqqgjxusmy" path="res://resources/trees/big_bush.tres" id="11_t634p"]
 [ext_resource type="Script" uid="uid://cmstbpmhkio7g" path="res://scripts/world/ground_interactable_component.gd" id="16_wbwoo"]
+[ext_resource type="Script" uid="uid://cusfxo8rfpyn2" path="res://scripts/world/game_object_registry.gd" id="17_t634p"]
+[ext_resource type="Script" uid="uid://da2fdpui26sgs" path="res://scripts/world/crop_registry.gd" id="18_6hctx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t5ptc"]
 resource_name = "base-blocks"
@@ -89,8 +91,8 @@ script = ExtResource("2_gb53w")
 
 [node name="GameObjectManager" type="Node2D" parent="." unique_id=998998708 node_paths=PackedStringArray("game_objects", "crop_layer")]
 script = ExtResource("4_5qq27")
-game_objects = NodePath("../GameObjects")
-crop_layer = NodePath("../CropLayer")
+game_objects = NodePath("../GameObjectRegistry")
+crop_layer = NodePath("../CropRegistry")
 tree_scene = ExtResource("2_bq33v")
 grass_scene = ExtResource("3_j2gmx")
 plot_scene = ExtResource("8_wbwoo")
@@ -107,7 +109,6 @@ ground_interactable_component = NodePath("../GroundTileMapLayer/InteractableComp
 script = ExtResource("2_1yooq")
 
 [node name="GroundTileMapLayer" type="TileMapLayer" parent="." unique_id=1215690059]
-unique_name_in_owner = true
 z_index = -1
 y_sort_enabled = true
 texture_filter = 1
@@ -121,17 +122,18 @@ interaction_priority = -1
 parent = NodePath("..")
 
 [node name="GroundHighlightTileMapLayer" type="TileMapLayer" parent="." unique_id=564940117]
-unique_name_in_owner = true
 z_index = -1
 y_sort_enabled = true
 texture_filter = 1
 tile_set = SubResource("TileSet_1fp7r")
 
-[node name="GameObjects" type="Node2D" parent="." unique_id=281104463]
+[node name="GameObjectRegistry" type="Node2D" parent="." unique_id=281104463]
 y_sort_enabled = true
+script = ExtResource("17_t634p")
 
-[node name="CropLayer" type="Node2D" parent="." unique_id=1213965071]
+[node name="CropRegistry" type="Node2D" parent="." unique_id=1213965071]
 y_sort_enabled = true
+script = ExtResource("18_6hctx")
 
 [node name="Ysort" type="Node2D" parent="." unique_id=342279187]
 y_sort_enabled = true

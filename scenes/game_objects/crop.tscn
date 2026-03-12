@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bolybyyq5mc73" path="res://assets/sprites/tiles/crops/crop-sprite-sheet.png" id="1_js6be"]
 [ext_resource type="Script" uid="uid://ye3utjocx7c1" path="res://scripts/game_objects/crop.gd" id="1_lvu7l"]
 [ext_resource type="Script" uid="uid://covpe4mdm2svg" path="res://scripts/crops/crop_component.gd" id="2_brnrd"]
+[ext_resource type="Script" uid="uid://bbvdll3k863im" path="res://scripts/game_objects/game_object_component.gd" id="4_yfkka"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_brnrd"]
 atlas = ExtResource("1_js6be")
@@ -213,5 +214,10 @@ metadata/_custom_type_script = "uid://covpe4mdm2svg"
 [node name="Timer" type="Timer" parent="." unique_id=1217446678]
 process_callback = 0
 autostart = true
+
+[node name="GameObjectComponent" type="Node2D" parent="." unique_id=1850529800 node_paths=PackedStringArray("parent")]
+script = ExtResource("4_yfkka")
+parent = NodePath("..")
+metadata/_custom_type_script = "uid://bbvdll3k863im"
 
 [connection signal="timeout" from="Timer" to="CropComponent" method="_on_timer_timeout"]

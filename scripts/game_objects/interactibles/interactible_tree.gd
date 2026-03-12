@@ -29,10 +29,7 @@ func can_interact(args: InteractionArgs) -> int:
 	return InteractionType.NONE
 
 func interact(action: InteractionAction):
-	# We know that actor is a player from @can_interact()
-	var player: Player = action.args.actor
-	
-	var base_damage = player.configs.player_config.player_base_damage
+	var base_damage = ConfigProvider.player_config.player_base_damage
 	var total_damage = 0
 	
 	# Directly access tool.data because tool cannot be null from @can_interact()

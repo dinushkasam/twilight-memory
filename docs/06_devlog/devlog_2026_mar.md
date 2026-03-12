@@ -9,3 +9,5 @@
 ## 2026-03-12
 - Finished the crop planing tool interaction.
 - Tested crop stage advancement.
+- Created and added the game object component to the tree, grass, plot and crop game objects.
+- Refactored the game object manager to store game objects in a registry.
