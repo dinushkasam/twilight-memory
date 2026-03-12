@@ -13,3 +13,4 @@
 - Refactored the game object manager to store game objects in a registry.
 - Removed the physics queries in the interaction manager and integrated the object registries for querying objects at a tile.
 - Add crop seed box sprites for carrot, wheat, radish and corn.
+- Completed the crop seed box interaction and crop plating cycle. Currently crops grow upto ripe stage and stay there.

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ToolData" format=3 uid="uid://jluxywj4lmd0"]
+
+[ext_resource type="Script" uid="uid://caybb0710i8v1" path="res://scripts/tools/tool_data.gd" id="1_vfvwg"]
+[ext_resource type="PackedScene" uid="uid://bbfbvhfgtv2lq" path="res://scenes/game_objects/crop.tscn" id="2_kcolb"]
+[ext_resource type="PackedScene" uid="uid://c8rn16wv66ndj" path="res://scenes/tools/tool_scene.tscn" id="2_m7n2b"]
+[ext_resource type="Resource" uid="uid://0f5hmucsobww" path="res://resources/crops/corn.tres" id="2_obqh7"]
+
+[resource]
+script = ExtResource("1_vfvwg")
+tool_name = "Corn Seed Bag"
+animation = "corn_seed_bag"
+tool_scene = ExtResource("2_m7n2b")
+tool_tags = Array[String](["seed", "corn_seed_bag"])
+consumable = true
+spawn_entity = ExtResource("2_kcolb")
+spawn_args = {
+"crop_type": ExtResource("2_obqh7")
+}
+metadata/_custom_type_script = "uid://caybb0710i8v1"

@@ -15,6 +15,7 @@ class_name Player
 # Need to call the init function to inject dependencies
 func init():
 	player_state_machine.init(self)
+	tool_controller.init()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
