@@ -37,12 +37,12 @@ func advance_stage():
 	current_stage = new_stage as CropStage
 	update_animation()
 	start_stage_timer()
-	print("advanced stage")
 
 
 # TEMP
 func start_stage_timer():
 	if current_stage >= CropStage.RIPE:
+		timer.stop()
 		return
 	
 	var duration = data.stage_durations.get(current_stage, 0)
@@ -51,4 +51,5 @@ func start_stage_timer():
 		print("timer started for ", duration, " seconds")
 
 func _on_timer_timeout() -> void:
+	print("timeout -> Advance stage")
 	advance_stage()
