@@ -50,6 +50,7 @@ func spawn_plot(coords: Vector2i):
 	var gmc: GameObjectComponent = plot.get_node("GameObjectComponent")
 	gmc.tile_coords = coords
 	game_objects.add_child(plot)
+	print("Plot spawned")
 
 func spawn_entity(entity: Node2D, coords: Vector2i):
 	var position = WorldContext.ground.map_to_local(coords)
@@ -62,6 +63,13 @@ func spawn_entity(entity: Node2D, coords: Vector2i):
 	game_objects.add_child(entity)
 
 func spawn_crop(crop: Crop, coords: Vector2i):
+	# First check if coords already have a crop
+	var check = WorldContext.crop_registry.get_crops_at(coords)
+	if check != null:
+		# Plot already has a crop
+		print("Plot already has a crop")
+		return
+	
 	var position = WorldContext.ground.map_to_local(coords)
 	crop.set("position", position)
 	

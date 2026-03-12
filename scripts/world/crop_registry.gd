@@ -6,7 +6,6 @@ var crop_by_tile := {}
 var next_id: int = 1
 
 
-
 func register_crop(obj: GameObjectComponent):
 	obj.id = next_id
 	next_id += 1
