@@ -13,7 +13,11 @@
 [ext_resource type="Resource" uid="uid://b14l1cwtohvnv" path="res://resources/tools/axe.tres" id="11_gx1jg"]
 [ext_resource type="Resource" uid="uid://b3kuj8oroj7dh" path="res://resources/tools/hoe.tres" id="12_ugbui"]
 [ext_resource type="Resource" uid="uid://rap4310kkyd7" path="res://resources/tools/sickle.tres" id="13_fcs02"]
+[ext_resource type="Resource" uid="uid://cs8o6rta31w0t" path="res://resources/items/carrot_seed_bag.tres" id="14_fcs02"]
 [ext_resource type="Texture2D" uid="uid://c71g2cwpv8o1e" path="res://assets/sprites/tiles/tools/tools-spritesheet.png" id="14_ugbui"]
+[ext_resource type="Resource" uid="uid://jluxywj4lmd0" path="res://resources/items/corn_seed_bag.tres" id="15_uf5tr"]
+[ext_resource type="Resource" uid="uid://dedi0km33vf8j" path="res://resources/items/radish_seed_bag.tres" id="16_lgqa7"]
+[ext_resource type="Resource" uid="uid://bews1isage28u" path="res://resources/items/wheat_seed_bag.tres" id="17_8ydkj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gmlin"]
 size = Vector2(13.5, 6.125)
@@ -516,13 +520,29 @@ _data = {
 atlas = ExtResource("14_ugbui")
 region = Rect2(32, 0, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_uf5tr"]
+atlas = ExtResource("14_ugbui")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lgqa7"]
+atlas = ExtResource("14_ugbui")
+region = Rect2(96, 32, 32, 32)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_myrg7"]
 atlas = ExtResource("14_ugbui")
 region = Rect2(64, 0, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ydkj"]
+atlas = ExtResource("14_ugbui")
+region = Rect2(0, 32, 32, 32)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_kvlxm"]
 atlas = ExtResource("14_ugbui")
 region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3j4b4"]
+atlas = ExtResource("14_ugbui")
+region = Rect2(64, 32, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_uf5tr"]
 animations = [{
@@ -536,6 +556,22 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_uf5tr")
+}],
+"loop": true,
+"name": &"carrot_seed_bag",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lgqa7")
+}],
+"loop": true,
+"name": &"corn_seed_bag",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_myrg7")
 }],
 "loop": true,
@@ -544,10 +580,26 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_8ydkj")
+}],
+"loop": true,
+"name": &"radish_seed_bag",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_kvlxm")
 }],
 "loop": true,
 "name": &"sickle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3j4b4")
+}],
+"loop": true,
+"name": &"wheat_seed_bag",
 "speed": 5.0
 }]
 
@@ -601,10 +653,10 @@ tool_controller = NodePath("../ToolController")
 script = ExtResource("9_5gtgg")
 animation_player = NodePath("../AnimationPlayer")
 tool_sprite = NodePath("../ToolSprite")
-tools = Array[ExtResource("10_h17s1")]([ExtResource("11_gx1jg"), ExtResource("12_ugbui"), ExtResource("13_fcs02"), null, null])
+tools = Array[ExtResource("10_h17s1")]([ExtResource("11_gx1jg"), ExtResource("12_ugbui"), ExtResource("13_fcs02"), ExtResource("14_fcs02"), ExtResource("15_uf5tr"), ExtResource("16_lgqa7"), ExtResource("17_8ydkj"), null, null])
 
 [node name="ToolSprite" type="AnimatedSprite2D" parent="." unique_id=241738329]
 texture_filter = 1
 position = Vector2(-12.105, -71.695)
 sprite_frames = SubResource("SpriteFrames_uf5tr")
-animation = &"axe"
+animation = &"radish_seed_bag"

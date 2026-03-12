@@ -1,12 +1,9 @@
 extends Node
 class_name InputInterface
 
-# World State
-var world_context: WorldContext
-
-# Need to call the init function to inject dependencies
-func init(context: WorldContext):
-	world_context = context
+# Signals
+@warning_ignore("unused_signal")
+signal tile_clicked(coords: Vector2i)
 
 func get_movement() -> Vector2:
 	var up = Input.get_action_strength("up")

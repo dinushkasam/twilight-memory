@@ -4,4 +4,5 @@
 
 [resource]
 script = ExtResource("1_ha3w6")
+hotbar_max_tools = 8
 metadata/_custom_type_script = "uid://m4rwi5y1r8gc"

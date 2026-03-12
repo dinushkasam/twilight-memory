@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="CropData" format=3 uid="uid://crb8eytlbiquo"]
+
+[ext_resource type="Script" uid="uid://dclxc6whq5u5d" path="res://scripts/crops/crop_data.gd" id="1_lq0tg"]
+
+[resource]
+script = ExtResource("1_lq0tg")
+crop_name = "Carrot"
+animation = "carrot"
+stage_durations = {
+0: 5.0,
+1: 5.0,
+2: 5.0,
+3: 5.0,
+4: 5.0,
+5: 5.0
+}
+metadata/_custom_type_script = "uid://dclxc6whq5u5d"

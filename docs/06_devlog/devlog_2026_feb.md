@@ -50,3 +50,5 @@
 
 ## 2026-02-27
 - Added basic tool display.
+- Implementing crop plot spawning with hoe.
+- Implemented the crop cycle initial code. (Crop data resource and crop component)

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ToolData" format=3 uid="uid://bews1isage28u"]
+
+[ext_resource type="Script" uid="uid://caybb0710i8v1" path="res://scripts/tools/tool_data.gd" id="1_aw7g1"]
+[ext_resource type="Resource" uid="uid://dh5ibwv2hxhia" path="res://resources/crops/wheat.tres" id="2_p6318"]
+[ext_resource type="PackedScene" uid="uid://bbfbvhfgtv2lq" path="res://scenes/game_objects/crop.tscn" id="2_wvc65"]
+[ext_resource type="PackedScene" uid="uid://c8rn16wv66ndj" path="res://scenes/tools/tool_scene.tscn" id="3_p6318"]
+
+[resource]
+script = ExtResource("1_aw7g1")
+tool_name = "Wheat Seed Bag"
+animation = "wheat_seed_bag"
+tool_scene = ExtResource("3_p6318")
+tool_tags = Array[String](["seed", "wheat_seed_bag"])
+consumable = true
+spawn_entity = ExtResource("2_wvc65")
+spawn_args = {
+"crop_type": ExtResource("2_p6318")
+}
+metadata/_custom_type_script = "uid://caybb0710i8v1"

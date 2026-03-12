@@ -19,6 +19,8 @@
 [ext_resource type="Resource" uid="uid://chuplpswgfd54" path="res://resources/trees/small_bush.tres" id="10_tytul"]
 [ext_resource type="Resource" uid="uid://dmmvqqgjxusmy" path="res://resources/trees/big_bush.tres" id="11_t634p"]
 [ext_resource type="Script" uid="uid://cmstbpmhkio7g" path="res://scripts/world/ground_interactable_component.gd" id="16_wbwoo"]
+[ext_resource type="Script" uid="uid://cusfxo8rfpyn2" path="res://scripts/world/game_object_registry.gd" id="17_t634p"]
+[ext_resource type="Script" uid="uid://da2fdpui26sgs" path="res://scripts/world/crop_registry.gd" id="18_6hctx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t5ptc"]
 resource_name = "base-blocks"
@@ -72,24 +74,25 @@ width = 64
 height = 64
 noise = SubResource("FastNoiseLite_1yooq")
 
-[node name="World" type="Node2D" unique_id=715088121 node_paths=PackedStringArray("world_input_component", "world_generator_component", "world_context", "config_provider", "game_obj_manager", "ground", "highlight")]
+[node name="World" type="Node2D" unique_id=715088121 node_paths=PackedStringArray("world_input_component", "world_generator_component", "config_provider", "game_obj_manager", "ground", "highlight")]
 y_sort_enabled = true
 script = ExtResource("2_sl2e5")
 world_input_component = NodePath("WorldInputComponent")
 world_generator_component = NodePath("WorldGeneratorComponent")
-world_context = NodePath("WorldContext")
 config_provider = NodePath("ConfigProvider")
 game_obj_manager = NodePath("GameObjectManager")
 ground = NodePath("GroundTileMapLayer")
 highlight = NodePath("GroundHighlightTileMapLayer")
-
-[node name="ConfigProvider" type="Node" parent="." unique_id=378685759]
-script = ExtResource("2_gb53w")
 game_config = ExtResource("3_srmg5")
 player_config = ExtResource("4_umvgx")
 
-[node name="GameObjectManager" type="Node2D" parent="." unique_id=998998708]
+[node name="ConfigProvider" type="Node" parent="." unique_id=378685759]
+script = ExtResource("2_gb53w")
+
+[node name="GameObjectManager" type="Node2D" parent="." unique_id=998998708 node_paths=PackedStringArray("game_objects", "crop_layer")]
 script = ExtResource("4_5qq27")
+game_objects = NodePath("../GameObjectRegistry")
+crop_layer = NodePath("../CropRegistry")
 tree_scene = ExtResource("2_bq33v")
 grass_scene = ExtResource("3_j2gmx")
 plot_scene = ExtResource("8_wbwoo")
@@ -106,7 +109,6 @@ ground_interactable_component = NodePath("../GroundTileMapLayer/InteractableComp
 script = ExtResource("2_1yooq")
 
 [node name="GroundTileMapLayer" type="TileMapLayer" parent="." unique_id=1215690059]
-unique_name_in_owner = true
 z_index = -1
 y_sort_enabled = true
 texture_filter = 1
@@ -120,14 +122,18 @@ interaction_priority = -1
 parent = NodePath("..")
 
 [node name="GroundHighlightTileMapLayer" type="TileMapLayer" parent="." unique_id=564940117]
-unique_name_in_owner = true
 z_index = -1
 y_sort_enabled = true
 texture_filter = 1
 tile_set = SubResource("TileSet_1fp7r")
 
-[node name="GameObjects" type="Node2D" parent="." unique_id=281104463]
+[node name="GameObjectRegistry" type="Node2D" parent="." unique_id=281104463]
 y_sort_enabled = true
+script = ExtResource("17_t634p")
+
+[node name="CropRegistry" type="Node2D" parent="." unique_id=1213965071]
+y_sort_enabled = true
+script = ExtResource("18_6hctx")
 
 [node name="Ysort" type="Node2D" parent="." unique_id=342279187]
 y_sort_enabled = true
@@ -148,4 +154,4 @@ script = ExtResource("6_j2gmx")
 world_seed = SubResource("NoiseTexture2D_6m72w")
 object_seed = SubResource("NoiseTexture2D_gb53w")
 
-[connection signal="tile_clicked" from="WorldContext" to="Ysort/Player" method="_on_world_context_tile_clicked"]
+[connection signal="tile_clicked" from="WorldInputComponent" to="Ysort/Player" method="_on_world_input_component_tile_clicked"]

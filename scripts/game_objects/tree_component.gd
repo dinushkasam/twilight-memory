@@ -2,9 +2,9 @@ extends Node
 class_name TreeComponent
 
 @export var sprite: AnimatedSprite2D
+@export var health_component: HealthComponent
 
 var data: TreeConfig
-var current_health: int
 
 enum TreeVariants {
 	small_tree,
@@ -17,11 +17,10 @@ signal tree_died
 
 func set_variant(config: TreeConfig):
 	data = config
-	current_health = data.max_health
+	health_component.current_health = data.max_health
 	sprite.play(data.animation_name)
 
 func hit_tree(damage: int):
-	current_health -= damage
-	print("tree hit damage: ", damage)
-	if current_health <= 0:
+	health_component.do_damage(damage)
+	if health_component.is_dead():
 		tree_died.emit()

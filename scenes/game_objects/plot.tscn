@@ -1,8 +1,12 @@
 [gd_scene format=3 uid="uid://c3iq4xxgnui6n"]
 
 [ext_resource type="Texture2D" uid="uid://357wrcnl6yw1" path="res://assets/sprites/tiles/crop-block.png" id="1_4mrub"]
+[ext_resource type="Script" uid="uid://sojprt17bacp" path="res://scripts/game_objects/interactibles/interactible_plot.gd" id="2_rajy0"]
+[ext_resource type="Script" uid="uid://bbvdll3k863im" path="res://scripts/game_objects/game_object_component.gd" id="3_eejp3"]
 
 [node name="Plot" type="Area2D" unique_id=2010382839]
+z_index = -1
+y_sort_enabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=394615048]
 texture_filter = 1
@@ -13,5 +17,11 @@ offset = Vector2(0, -16)
 polygon = PackedVector2Array(-31, 0, 0, -16, 32, 0, 0, 16)
 
 [node name="InteractableComponent" type="Node" parent="." unique_id=748268907]
+script = ExtResource("2_rajy0")
 
 [node name="PlotComponent" type="Node" parent="." unique_id=1774966092]
+
+[node name="GameObjectComponent" type="Node2D" parent="." unique_id=1205987966 node_paths=PackedStringArray("parent")]
+script = ExtResource("3_eejp3")
+parent = NodePath("..")
+metadata/_custom_type_script = "uid://bbvdll3k863im"

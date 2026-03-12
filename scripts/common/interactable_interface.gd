@@ -9,7 +9,8 @@ enum InteractionType {
 	BARE_HANDS,
 	BEST_TOOL,
 	INEFFICIENT_TOOL,
-	PLOW
+	PLOW,
+	PLANT_SEED
 }
 
 class InteractionArgs:
@@ -31,11 +32,18 @@ class InteractionAction:
 		self.interaction_type = type
 
 func _ready() -> void:
+	set_parent(null)
 	parent.add_to_group("interactable")
 	parent.set_meta("interactable", self)
 
 
 # Extensible methods
+func set_parent(node: Node):
+	if node:
+		self.parent = node
+	else:
+		self.parent = get_parent()
+
 func can_interact(_args: InteractionArgs) -> int:
 	return InteractionType.NONE
 

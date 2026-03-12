@@ -1,30 +1,27 @@
 extends Node2D
 
 @export var world_input_component: WorldInputComponent
-@export var world_generator_component: WorldGeneratorCOmponent
-@export var world_context: WorldContext
+@export var world_generator_component: WorldGeneratorComponent
 @export var config_provider: ConfigProvider
 @export var game_obj_manager: GameObjectManager
 
 @export var ground: TileMapLayer
 @export var highlight: TileMapLayer
 
+@export var game_config: GameConfig
+@export var player_config: PlayerConfig
+
+
 func _ready() -> void:
-	# Initialize Game object manager
-	game_obj_manager.init($GameObjects)
-	
 	# Initialize world context
-	world_context.init(
-		%GroundTileMapLayer,
-		$GameObjectManager,
-		%GroundHighlightTileMapLayer,
-		$InteractionManager
+	WorldContext.init(self)
+	ConfigProvider.init(
+		game_config,
+		player_config
 	)
 	
-	# Initialize components with world context
-	world_input_component.init(world_context)
-	$Ysort/Player.init(world_context, config_provider)
-	world_generator_component.init(world_context)
+	# Initialize player
+	$Ysort/Player.init()
 	
 	# Generate the world with a given seed
 	world_generator_component.generate_world_map(0)

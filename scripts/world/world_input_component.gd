@@ -39,20 +39,20 @@ func handle_camera_zoom_out():
 
 func handle_left_click(event):
 	if super.left_mouse_clicked(event):
-		if world_context.ground.get_cell_source_id(world_context.highlighted_cell) != -1:
-				world_context.tile_clicked.emit(world_context.highlighted_cell)
+		if WorldContext.ground.get_cell_source_id(WorldContext.highlighted_cell) != -1:
+			tile_clicked.emit(WorldContext.highlighted_cell)
 
 func handle_cell_hover():
-	var cell := world_context.get_hovered_cell()
-	if cell == world_context.highlighted_cell:
+	var cell := WorldContext.get_hovered_cell()
+	if cell == WorldContext.highlighted_cell:
 		return
 
-	world_context.highlight.clear()
+	WorldContext.highlight.clear()
 
-	if world_context.ground.get_cell_source_id(cell) != -1:
-		world_context.highlight.set_cell(
+	if WorldContext.ground.get_cell_source_id(cell) != -1:
+		WorldContext.highlight.set_cell(
 			cell,
 			BASE_BLOCKS_ID,
 			HIGHLIGHT_ATLUS
 		)
-		world_context.highlighted_cell = cell
+		WorldContext.highlighted_cell = cell

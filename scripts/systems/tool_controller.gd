@@ -21,9 +21,8 @@ signal tool_added(tool: ToolData, index: int)
 signal tool_removed(tool: ToolData, index: int)
 
 
-func init(configs_arg: ConfigProvider):
-	configs = configs_arg
-	max_tools = configs.player_config.hotbar_max_tools
+func init():
+	max_tools = ConfigProvider.player_config.hotbar_max_tools
 	tools.resize(max_tools)
 
 func _ready() -> void:

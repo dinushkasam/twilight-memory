@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ToolData" format=3 uid="uid://dedi0km33vf8j"]
+
+[ext_resource type="Script" uid="uid://caybb0710i8v1" path="res://scripts/tools/tool_data.gd" id="1_3dkta"]
+[ext_resource type="Resource" uid="uid://crigdmjx58j1x" path="res://resources/crops/radish.tres" id="2_vur1p"]
+[ext_resource type="PackedScene" uid="uid://bbfbvhfgtv2lq" path="res://scenes/game_objects/crop.tscn" id="3_crkyg"]
+[ext_resource type="PackedScene" uid="uid://c8rn16wv66ndj" path="res://scenes/tools/tool_scene.tscn" id="4_0its6"]
+
+[resource]
+script = ExtResource("1_3dkta")
+tool_name = "Radish Seed bag"
+animation = "radish_seed_bag"
+tool_scene = ExtResource("4_0its6")
+tool_tags = Array[String](["seed", "radish_seed_bag"])
+consumable = true
+spawn_entity = ExtResource("3_crkyg")
+spawn_args = {
+"crop_type": ExtResource("2_vur1p")
+}
+metadata/_custom_type_script = "uid://caybb0710i8v1"

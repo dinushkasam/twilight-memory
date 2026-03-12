@@ -11,21 +11,11 @@ class_name Player
 
 @export var last_facing_direction: Vector2
 
-# World State
-var world_context: WorldContext
-
-# Config provider
-var configs: ConfigProvider
 
 # Need to call the init function to inject dependencies
-func init(context: WorldContext, config_provider: ConfigProvider):
-	world_context = context
-	configs = config_provider
-	
-	# Init child dependencies 
-	tool_controller.init(configs)
-	player_input_component.init(world_context)
+func init():
 	player_state_machine.init(self)
+	tool_controller.init()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -80,8 +70,8 @@ func get_direction_from_vector(v: Vector2) -> Direction:
 		return Direction.south_west
 
 
-func _on_world_context_tile_clicked(coords: Vector2i) -> void:
+func _on_world_input_component_tile_clicked(coords: Vector2i) -> void:
 	if tool_controller.is_tool_equipped():
 		tool_controller.use_tool(self, coords)
 	else:
-		world_context.interact(coords, self, null)
+		WorldContext.interact(coords, self, null)
