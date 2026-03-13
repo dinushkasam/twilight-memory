@@ -56,12 +56,12 @@ func is_tool_equipped() -> bool:
 func use_tool(actor: Player, target_tile: Vector2i):
 	active_tool.use(actor, target_tile)
 
-func add_tool(tool: ItemData, index: int):
+func add_tool_to_slot(tool: ItemData, index: int):
 	if index < max_tools:
 		tools[index] = tool
 		tool_added.emit(tool, index)
 
-func remove_tool(tool: ItemData, index: int):
+func remove_tool_from_slot(tool: ItemData, index: int):
 	if index < max_tools:
 		tools[index] = null
 		tool_removed.emit(tool, index)

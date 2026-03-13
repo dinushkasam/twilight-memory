@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://dmpy7ikebbw6i"]
+
+[ext_resource type="Texture2D" uid="uid://217gne2oa6n7" path="res://assets/sprites/tiles/tools/items.png" id="1_jmds5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_43aun"]
+atlas = ExtResource("1_jmds5")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5rc08"]
+atlas = ExtResource("1_jmds5")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h7jy7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_43aun")
+}],
+"loop": true,
+"name": &"stick",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5rc08")
+}],
+"loop": true,
+"name": &"wood",
+"speed": 5.0
+}]
+
+[node name="Collectible" type="Node2D" unique_id=1468680159]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1868405927]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_h7jy7")
+animation = &"wood"
+
+[node name="Area2D" type="Area2D" parent="." unique_id=111454239]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D" unique_id=1878093876]
+position = Vector2(-1, 0)
+polygon = PackedVector2Array(-66, 0, 0, -32, 70, 0, 0, 34)

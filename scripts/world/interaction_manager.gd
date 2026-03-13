@@ -1,39 +1,34 @@
 extends Node
 class_name InteractionManager
 
+
 @export var ground_interactable_component: InteractableInterface
+var interaction_effects: InteractionEffects
+
+
+func _ready() -> void:
+	interaction_effects = InteractionEffects.new()
 
 
 func interact_at_tile(coords: Vector2i, actor: Node2D, tool: Node2D):
 	var results: Array[GameObjectComponent] = WorldContext.game_object_registry.get_objects_at(coords)
 	
 	var best: InteractableInterface = null
-	var interact_args = InteractableInterface.InteractionArgs.new(
-		coords,
-		actor,
-		tool
-	)
-	var interaction_type: int = InteractableInterface.InteractionType.NONE
+	var action: InteractableInterface.InteractionAction
 	
-	# First check for interactable physics objects
+	# First check for interactable objects
 	for hit in results:
 		var node: Node = hit.parent
 		if node.is_in_group("interactable"):
 			var interactable: InteractableInterface = node.get_meta("interactable", null)
-			interaction_type = interactable.can_interact(interact_args)
-			if interaction_type != InteractableInterface.InteractionType.NONE:
-				if best == null or interactable.interaction_priority > best.interaction_priority:
-					best = interactable
+			if best == null or interactable.interaction_priority > best.interaction_priority:
+				best = interactable
+				action = interactable.build_interaction_action(actor, tool, coords)
 	
-	# If no physics interactables, check for ground interactions
+	# If no interactables, check for ground interactions
 	if results.size() == 0 and best == null:
-		interaction_type = ground_interactable_component.can_interact(interact_args)
-		if interaction_type != InteractableInterface.InteractionType.NONE:
-			best = ground_interactable_component
+		best = ground_interactable_component
+		action = ground_interactable_component.build_interaction_action(actor, tool, coords)
 	
-	if best and interaction_type != InteractableInterface.InteractionType.NONE:
-		var interact_action = InteractableInterface.InteractionAction.new(
-			interact_args,
-			interaction_type
-		)
-		best.interact(interact_action)
+	if best:
+		interaction_effects.apply(action)

@@ -1,15 +1,15 @@
-[gd_resource type="Resource" script_class="Item" format=3 uid="uid://jluxywj4lmd0"]
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://jluxywj4lmd0"]
 
+[ext_resource type="PackedScene" uid="uid://ck6g8fuxnk4dc" path="res://scenes/game_objects/items/item.tscn" id="1_obqh7"]
 [ext_resource type="PackedScene" uid="uid://bbfbvhfgtv2lq" path="res://scenes/game_objects/crop.tscn" id="2_kcolb"]
 [ext_resource type="Script" uid="uid://dcp7xodb11454" path="res://scripts/common/item_interface.gd" id="2_khfv8"]
-[ext_resource type="PackedScene" uid="uid://c8rn16wv66ndj" path="res://scenes/tools/tool_scene.tscn" id="2_m7n2b"]
 [ext_resource type="Resource" uid="uid://0f5hmucsobww" path="res://resources/crops/corn.tres" id="2_obqh7"]
 
 [resource]
 script = ExtResource("2_khfv8")
 item_name = "Corn Seed Bag"
 animation = "corn_seed_bag"
-item_scene = ExtResource("2_m7n2b")
+item_scene = ExtResource("1_obqh7")
 item_tags = Array[String](["seed", "corn_seed_bag"])
 consumable = true
 spawn_entity = ExtResource("2_kcolb")

@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="Item" format=3 uid="uid://ndevyd2fdwoh"]
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://ndevyd2fdwoh"]
 
 [ext_resource type="Script" uid="uid://dcp7xodb11454" path="res://scripts/common/item_interface.gd" id="1_iebgy"]
-[ext_resource type="PackedScene" uid="uid://c8rn16wv66ndj" path="res://scenes/tools/tool_scene.tscn" id="1_n0pnn"]
+[ext_resource type="PackedScene" uid="uid://ck6g8fuxnk4dc" path="res://scenes/game_objects/items/item.tscn" id="1_ro0gi"]
 [ext_resource type="Resource" uid="uid://crb8eytlbiquo" path="res://resources/crops/carrot.tres" id="3_xcbgh"]
 [ext_resource type="PackedScene" uid="uid://bbfbvhfgtv2lq" path="res://scenes/game_objects/crop.tscn" id="4_8o4ek"]
 
@@ -9,7 +9,7 @@
 script = ExtResource("1_iebgy")
 item_name = "Carrot Seed Bag"
 animation = "carrot_seed_bag"
-item_scene = ExtResource("1_n0pnn")
+item_scene = ExtResource("1_ro0gi")
 item_tags = Array[String](["seed", "carrot_seed_bag"])
 consumable = true
 spawn_entity = ExtResource("4_8o4ek")

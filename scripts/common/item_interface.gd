@@ -37,4 +37,10 @@ func get_crop_data_arg() -> CropData:
 		return null
 	
 	return data as CropData
+
+func get_spawn_entity() -> PackedScene:
+	if not spawn_entity:
+		printerr("Spawn entity scene not set for -> ", item_name)
+		return null
 	
+	return spawn_entity

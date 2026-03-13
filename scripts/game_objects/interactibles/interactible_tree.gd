@@ -5,36 +5,26 @@ extends InteractableInterface
 
 
 # Overrides
-func can_interact(args: InteractionArgs) -> int:
-	# Check if its the player
-	var is_player = args.actor is Player
+func build_interaction_action(actor: Node2D, tool: Item, tile: Vector2i) -> InteractionAction:
+	var type: InteractionType = InteractionType.NONE
+	var action: Action = Action.NONE
 	
+	# Check if its the player
+	var is_player = actor is Player
 	if not is_player:
-		return InteractionType.NONE
+		return InteractionAction.new(tile, actor, tool, type, action, tree_component)
 
-	if args.tool == null:
-		return InteractionType.BARE_HANDS
+	if tool == null:
+		type = InteractionType.BARE_HANDS
 	
 	# Check tool preference for tree type
-	var tool_tags = args.tool.data.item_tags
+	var tool_tags = tool.data.item_tags
+	type = tree_component.data.is_tool_for_tree(tool_tags) as InteractionType
 	
-	return tree_component.data.is_tool_for_tree(tool_tags)
-
-func interact(action: InteractionAction):
-	var base_damage = ConfigProvider.player_config.player_base_damage
-	var total_damage = 0
+	match type:
+		InteractionType.BEST_TOOL, InteractionType.INEFFICIENT_TOOL:
+			action = Action.HIT_TREE
+		_:
+			action = Action.NONE
 	
-	# Directly access tool.data because tool cannot be null from @can_interact()
-	if action.interaction_type != InteractionType.BARE_HANDS:
-		var item_data = action.args.tool.get_data()
-		if item_data is ToolData:
-			var tool_data: ToolData = item_data as ToolData
-			base_damage += tool_data.tool_power
-	
-	var multiplier = tree_component.data.get_damage_multiplier(action.interaction_type)
-	if multiplier == -1:
-		printerr("Unsupported interaction type on tree object")
-	
-	total_damage = base_damage * multiplier
-	
-	tree_component.hit_tree(total_damage)
+	return InteractionAction.new(tile, actor, tool, type, action, tree_component)

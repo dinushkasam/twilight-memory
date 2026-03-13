@@ -21,7 +21,7 @@ func is_tool_for_tree(tags: Array[String]) -> int:
 	
 	return InteractableInterface.InteractionType.NONE
 
-## return -1 for invalid entries
+## returns -1 for invalid entries
 func get_damage_multiplier(type: InteractableInterface.InteractionType) -> float:
 	match type:
 		InteractableInterface.InteractionType.BEST_TOOL:

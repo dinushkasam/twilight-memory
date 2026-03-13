@@ -12,30 +12,32 @@ var allowed_atluses = [
 ]
 
 # Extensible methods
-func can_interact(args: InteractionArgs) -> int:
-	if not args.actor is Player:
-		return InteractionType.NONE
+func build_interaction_action(actor: Node2D, tool: Item, tile: Vector2i) -> InteractionAction:
+	var action: InteractionAction = InteractionAction.new(
+		tile,
+		actor,
+		tool,
+		InteractionType.NONE,
+		Action.NONE,
+		self
+	)
 	
-	var source = ground_tile_map_layer.get_cell_source_id(args.coords)
+	if not actor is Player:
+		return action
+	
+	var source = ground_tile_map_layer.get_cell_source_id(tile)
 	if not source in allowed_sources:
-		return InteractionType.NONE
+		return action
 	
-	var atlus = ground_tile_map_layer.get_cell_atlas_coords(args.coords)
+	var atlus = ground_tile_map_layer.get_cell_atlas_coords(tile)
 	if not atlus in allowed_atluses:
-		return InteractionType.NONE
+		return action
 	
-	if args.tool == null:
-		return InteractionType.BARE_HANDS
+	if tool == null:
+		action.interaction_type = InteractionType.BARE_HANDS
+		return action
 	
-	if args.tool.data.is_hoe():
-		return InteractionType.PLOW
+	if tool.data.is_hoe():
+		action.action_type = Action.PLOW
 	
-	return InteractionType.NONE
-
-func interact(action: InteractionAction):
-	match action.interaction_type:
-		InteractionType.PLOW:
-			WorldServices.spawn_plot_at(action.args.coords)
-		_:
-			return
-			
+	return action

@@ -1,15 +1,16 @@
-[gd_resource type="Resource" script_class="Item" format=3 uid="uid://dedi0km33vf8j"]
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dedi0km33vf8j"]
 
+[ext_resource type="PackedScene" uid="uid://ck6g8fuxnk4dc" path="res://scenes/game_objects/items/item.tscn" id="1_vur1p"]
 [ext_resource type="Script" uid="uid://dcp7xodb11454" path="res://scripts/common/item_interface.gd" id="2_crkyg"]
 [ext_resource type="Resource" uid="uid://crigdmjx58j1x" path="res://resources/crops/radish.tres" id="2_vur1p"]
 [ext_resource type="PackedScene" uid="uid://bbfbvhfgtv2lq" path="res://scenes/game_objects/crop.tscn" id="3_crkyg"]
-[ext_resource type="PackedScene" uid="uid://c8rn16wv66ndj" path="res://scenes/tools/tool_scene.tscn" id="4_0its6"]
 
 [resource]
 script = ExtResource("2_crkyg")
 item_name = "Radish Seed bag"
 animation = "radish_seed_bag"
-item_scene = ExtResource("4_0its6")
+item_scene = ExtResource("1_vur1p")
+item_tags = Array[String](["seed", "radish_seed_bag"])
 consumable = true
 spawn_entity = ExtResource("3_crkyg")
 spawn_args = {
