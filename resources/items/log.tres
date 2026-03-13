@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://cpdk40gjgpoaf"]
+
+[ext_resource type="PackedScene" uid="uid://ck6g8fuxnk4dc" path="res://scenes/game_objects/items/item.tscn" id="1_8ql1g"]
+[ext_resource type="Script" uid="uid://dcp7xodb11454" path="res://scripts/common/item_interface.gd" id="1_hbu7g"]
+
+[resource]
+script = ExtResource("1_hbu7g")
+item_name = "Log"
+animation = "wood"
+item_scene = ExtResource("1_8ql1g")
+item_tags = Array[String](["wood"])
+consumable = true
+metadata/_custom_type_script = "uid://dcp7xodb11454"

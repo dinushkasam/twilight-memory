@@ -6,6 +6,8 @@ class_name GameObjectComponent
 var id: int
 var tile_coords: Vector2i
 
+@export var spawn_on_death: Dictionary = {}
+
 
 func _ready():
 	WorldContext.game_object_registry.register_object(self)

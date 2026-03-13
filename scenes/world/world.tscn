@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://bcfjxy7im26cv"]
 
-[ext_resource type="Script" uid="uid://dqmvewxjk35kd" path="res://scripts/world/world_context.gd" id="2_1yooq"]
 [ext_resource type="PackedScene" uid="uid://fbqtvk0uma4y" path="res://scenes/game_objects/tree_object.tscn" id="2_bq33v"]
 [ext_resource type="Script" uid="uid://c2r556vky6dkn" path="res://scripts/world/config_provider.gd" id="2_gb53w"]
 [ext_resource type="Script" uid="uid://cj8bdaiy0rtyu" path="res://scripts/world/world.gd" id="2_sl2e5"]
@@ -104,9 +103,6 @@ big_bush_resource = ExtResource("11_t634p")
 [node name="InteractionManager" type="Node" parent="." unique_id=534289190 node_paths=PackedStringArray("ground_interactable_component")]
 script = ExtResource("8_umvgx")
 ground_interactable_component = NodePath("../GroundTileMapLayer/InteractableComponent")
-
-[node name="WorldContext" type="Node2D" parent="." unique_id=755016948]
-script = ExtResource("2_1yooq")
 
 [node name="GroundTileMapLayer" type="TileMapLayer" parent="." unique_id=1215690059]
 z_index = -1

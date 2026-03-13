@@ -2,8 +2,8 @@ extends Node2D
 class_name Tool
 
 
-var data: ToolData
+var data: Item
 
 
 func use(actor: Player, target_tile: Vector2i):
-	WorldContext.interact(target_tile, actor, self)
+	WorldServices.interact_at_tile(target_tile, actor, self)

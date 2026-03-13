@@ -17,7 +17,7 @@ func register_crop(obj: GameObjectComponent):
 func unregister_crop(obj: GameObjectComponent):
 	crop_by_tile.erase(obj.tile_coords)
 
-func get_crops_at(tile: Vector2i):
+func get_crop_at(tile: Vector2i) -> GameObjectComponent:
 	if tile in crop_by_tile:
 		return crop_by_tile[tile]
 	

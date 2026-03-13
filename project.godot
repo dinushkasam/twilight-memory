@@ -23,6 +23,7 @@ config/icon="res://icon.svg"
 
 WorldContext="*uid://dqmvewxjk35kd"
 ConfigProvider="*uid://c2r556vky6dkn"
+WorldServices="*uid://f8td2pvdgfaa"
 
 [input]
 

@@ -1,32 +1,13 @@
 [gd_resource type="Resource" script_class="ToolData" format=3 uid="uid://b3kuj8oroj7dh"]
 
+[ext_resource type="PackedScene" uid="uid://c8rn16wv66ndj" path="res://scenes/tools/tool_scene.tscn" id="1_cvp6w"]
 [ext_resource type="Script" uid="uid://caybb0710i8v1" path="res://scripts/tools/tool_data.gd" id="1_l863g"]
-
-[sub_resource type="GDScript" id="GDScript_13f2r"]
-script/source = "extends Tool
-class_name HoeTool
-"
-
-[sub_resource type="PackedScene" id="PackedScene_l863g"]
-_bundled = {
-"conn_count": 0,
-"conns": PackedInt32Array(),
-"editable_instances": [],
-"id_paths": [],
-"names": PackedStringArray("HoeTool", "Node2D", "script", "metadata/_custom_type_script"),
-"node_count": 1,
-"node_ids": PackedInt32Array(1426552738),
-"node_paths": [],
-"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 2, 2, 0, 3, 1, 0),
-"variants": [SubResource("GDScript_13f2r"), "uid://llvw8mjwibhm"],
-"version": 3
-}
 
 [resource]
 script = ExtResource("1_l863g")
-tool_name = "Hoe"
-animation = "hoe"
-tool_scene = SubResource("PackedScene_l863g")
-tool_tags = Array[String](["hoe"])
 tool_power = 2
+item_name = "Hoe"
+animation = "hoe"
+item_scene = ExtResource("1_cvp6w")
+item_tags = Array[String](["hoe"])
 metadata/_custom_type_script = "uid://caybb0710i8v1"

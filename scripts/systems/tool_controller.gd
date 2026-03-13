@@ -8,7 +8,7 @@ class_name ToolController
 # Configs
 var configs: ConfigProvider
 
-@export var tools: Array[ToolData]
+@export var tools: Array[Item]
 var max_tools: int = 10
 
 # Active variables
@@ -16,9 +16,9 @@ var active_index = 0
 var active_tool: Tool
 
 # Signals
-signal tool_changed(tool: ToolData, index: int)
-signal tool_added(tool: ToolData, index: int)
-signal tool_removed(tool: ToolData, index: int)
+signal tool_changed(tool: Item, index: int)
+signal tool_added(tool: Item, index: int)
+signal tool_removed(tool: Item, index: int)
 
 
 func init():
@@ -37,7 +37,7 @@ func equip_tool(index: int):
 	var new_tool_data = tools[index]
 	
 	if new_tool_data:
-		active_tool = new_tool_data.tool_scene.instantiate()
+		active_tool = new_tool_data.item_scene.instantiate()
 		active_tool.data = new_tool_data
 		
 		# Tool sprite
@@ -46,7 +46,7 @@ func equip_tool(index: int):
 		
 		add_child(active_tool)
 	
-		print("Equipped slot [", index, "] tool: ", new_tool_data.tool_name)
+		print("Equipped slot [", index, "] tool: ", new_tool_data.item_name)
 	else:
 		print("Equipped slot [", index, "] tool: none")
 		tool_sprite.scale = Vector2(0,0)

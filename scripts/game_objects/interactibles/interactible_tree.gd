@@ -18,7 +18,7 @@ func can_interact(args: InteractionArgs) -> int:
 	# Check tool preference for tree type
 	var best = tree_component.data.best_tool
 	var inefficient = tree_component.data.inefficient_tool
-	var tool_tags = args.tool.data.tool_tags
+	var tool_tags = args.tool.data.item_tags
 	
 	if best.any(func(t): return t in tool_tags):
 		return InteractionType.BEST_TOOL

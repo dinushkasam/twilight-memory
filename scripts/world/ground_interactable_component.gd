@@ -27,7 +27,7 @@ func can_interact(args: InteractionArgs) -> int:
 	if args.tool == null:
 		return InteractionType.BARE_HANDS
 	
-	if "hoe" in args.tool.data.tool_tags:
+	if "hoe" in args.tool.data.item_tags:
 		return InteractionType.PLOW
 	
 	return InteractionType.NONE
@@ -35,7 +35,7 @@ func can_interact(args: InteractionArgs) -> int:
 func interact(action: InteractionAction):
 	match action.interaction_type:
 		InteractionType.PLOW:
-			WorldContext.spawn_plot(action.args.coords)
+			WorldServices.spawn_plot_at(action.args.coords)
 		_:
 			return
 			

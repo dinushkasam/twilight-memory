@@ -13,8 +13,17 @@ extends Node2D
 
 
 func _ready() -> void:
-	# Initialize world context
-	WorldContext.init(self)
+	# Initialize world context and services
+	WorldContext.init(
+		$GroundTileMapLayer,
+		$GroundHighlightTileMapLayer,
+		$GameObjectRegistry,
+		$CropRegistry
+	)
+	WorldServices.init(
+		$GameObjectManager,
+		$InteractionManager,
+	)
 	ConfigProvider.init(
 		game_config,
 		player_config

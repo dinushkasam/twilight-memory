@@ -62,9 +62,9 @@ func spawn_entity(entity: Node2D, coords: Vector2i):
 	
 	game_objects.add_child(entity)
 
-func spawn_crop(crop: Crop, coords: Vector2i):
+func spawn_crop(crop: Crop, coords: Vector2i, crop_data: CropData):
 	# First check if coords already have a crop
-	var check = WorldContext.crop_registry.get_crops_at(coords)
+	var check = WorldContext.get_crop_at_tile(coords)
 	if check != null:
 		# Plot already has a crop
 		print("Plot already has a crop")
@@ -76,6 +76,9 @@ func spawn_crop(crop: Crop, coords: Vector2i):
 	var gmc: GameObjectComponent = crop.get_node("GameObjectComponent")
 	gmc.tile_coords = coords
 	crop_layer.add_child(crop)
+	
+	# After adding to tree, initialize the crop
+	crop.initialize(crop_data)
 
 
 # Helper function

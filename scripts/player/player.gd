@@ -74,4 +74,4 @@ func _on_world_input_component_tile_clicked(coords: Vector2i) -> void:
 	if tool_controller.is_tool_equipped():
 		tool_controller.use_tool(self, coords)
 	else:
-		WorldContext.interact(coords, self, null)
+		WorldServices.interact_at_tile(coords, self, null)

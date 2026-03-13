@@ -13,7 +13,7 @@ func can_interact(args: InteractionArgs) -> int:
 		return InteractionType.BARE_HANDS
 	
 	# Check if it is a seed
-	var tool_tags = args.tool.data.tool_tags
+	var tool_tags = args.tool.data.item_tags
 	
 	if "seed" in tool_tags:
 		return InteractionType.PLANT_SEED
@@ -28,8 +28,7 @@ func interact(action: InteractionAction):
 			var crop_scene: PackedScene = tool_data.spawn_entity
 			
 			var crop: Crop = crop_scene.instantiate()
-			crop.initialize(crop_data)
 			
-			WorldContext.spawn_crop(crop, action.args.coords)
+			WorldServices.spawn_crop_at(crop, action.args.coords, crop_data)
 		_:
 			return

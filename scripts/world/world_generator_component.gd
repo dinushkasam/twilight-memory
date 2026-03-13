@@ -85,14 +85,14 @@ func generate_game_objects():
 			if noise > 0:
 				var tile_data = WorldContext.ground.get_cell_atlas_coords(tile_position)
 				if tile_data == GRASS_CUT_ATLUS:
-						WorldContext.spawn_grass(tile_position, GrassComponent.GrassVariants.grass)
+						WorldServices.spawn_grass_at(tile_position, GrassComponent.GrassVariants.grass)
 				elif tile_data == FLOWERS_ATLUS:
-					WorldContext.spawn_grass(tile_position, GrassComponent.GrassVariants.flowers)
+					WorldServices.spawn_grass_at(tile_position, GrassComponent.GrassVariants.flowers)
 			elif noise > -0.05 && noise < -0.045:
-				WorldContext.spawn_tree(tile_position, TreeComponent.TreeVariants.big_tree)
+				WorldServices.spawn_tree_at(tile_position, TreeComponent.TreeVariants.big_tree)
 			elif noise > -0.1 && noise < -0.095:
-				WorldContext.spawn_tree(tile_position, TreeComponent.TreeVariants.big_bush)
+				WorldServices.spawn_tree_at(tile_position, TreeComponent.TreeVariants.big_bush)
 			elif noise > -0.25 && noise < -0.245:
-				WorldContext.spawn_tree(tile_position, TreeComponent.TreeVariants.small_tree)
+				WorldServices.spawn_tree_at(tile_position, TreeComponent.TreeVariants.small_tree)
 			elif noise > -0.3 && noise < -0.295:
-				WorldContext.spawn_tree(tile_position, TreeComponent.TreeVariants.small_bush)
+				WorldServices.spawn_tree_at(tile_position, TreeComponent.TreeVariants.small_bush)

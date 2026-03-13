@@ -9,11 +9,11 @@
 [ext_resource type="Script" uid="uid://hc3djtow3jbr" path="res://scripts/player/state_machine/walk.gd" id="7_0owmy"]
 [ext_resource type="Script" uid="uid://c1ain0o2g07k6" path="res://scripts/player/player_input_component.gd" id="8_qek5x"]
 [ext_resource type="Script" uid="uid://ba5hujlxbvayv" path="res://scripts/systems/tool_controller.gd" id="9_5gtgg"]
-[ext_resource type="Script" uid="uid://caybb0710i8v1" path="res://scripts/tools/tool_data.gd" id="10_h17s1"]
+[ext_resource type="Script" uid="uid://dcp7xodb11454" path="res://scripts/common/item_interface.gd" id="10_uf5tr"]
 [ext_resource type="Resource" uid="uid://b14l1cwtohvnv" path="res://resources/tools/axe.tres" id="11_gx1jg"]
 [ext_resource type="Resource" uid="uid://b3kuj8oroj7dh" path="res://resources/tools/hoe.tres" id="12_ugbui"]
 [ext_resource type="Resource" uid="uid://rap4310kkyd7" path="res://resources/tools/sickle.tres" id="13_fcs02"]
-[ext_resource type="Resource" uid="uid://cs8o6rta31w0t" path="res://resources/items/carrot_seed_bag.tres" id="14_fcs02"]
+[ext_resource type="Resource" uid="uid://ndevyd2fdwoh" path="res://resources/items/carrot_seed_bag.tres" id="14_fcs02"]
 [ext_resource type="Texture2D" uid="uid://c71g2cwpv8o1e" path="res://assets/sprites/tiles/tools/tools-spritesheet.png" id="14_ugbui"]
 [ext_resource type="Resource" uid="uid://jluxywj4lmd0" path="res://resources/items/corn_seed_bag.tres" id="15_uf5tr"]
 [ext_resource type="Resource" uid="uid://dedi0km33vf8j" path="res://resources/items/radish_seed_bag.tres" id="16_lgqa7"]
@@ -653,7 +653,7 @@ tool_controller = NodePath("../ToolController")
 script = ExtResource("9_5gtgg")
 animation_player = NodePath("../AnimationPlayer")
 tool_sprite = NodePath("../ToolSprite")
-tools = Array[ExtResource("10_h17s1")]([ExtResource("11_gx1jg"), ExtResource("12_ugbui"), ExtResource("13_fcs02"), ExtResource("14_fcs02"), ExtResource("15_uf5tr"), ExtResource("16_lgqa7"), ExtResource("17_8ydkj"), null, null])
+tools = Array[ExtResource("10_uf5tr")]([ExtResource("11_gx1jg"), ExtResource("12_ugbui"), ExtResource("13_fcs02"), ExtResource("14_fcs02"), ExtResource("15_uf5tr"), ExtResource("17_8ydkj"), ExtResource("16_lgqa7"), null])
 
 [node name="ToolSprite" type="AnimatedSprite2D" parent="." unique_id=241738329]
 texture_filter = 1
