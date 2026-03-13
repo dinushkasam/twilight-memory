@@ -27,7 +27,7 @@ func can_interact(args: InteractionArgs) -> int:
 	if args.tool == null:
 		return InteractionType.BARE_HANDS
 	
-	if "hoe" in args.tool.data.item_tags:
+	if args.tool.data.is_hoe():
 		return InteractionType.PLOW
 	
 	return InteractionType.NONE

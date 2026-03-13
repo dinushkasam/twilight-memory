@@ -14,7 +14,7 @@ func can_interact(args: InteractionArgs) -> int:
 	if args.tool == null:
 		return InteractionType.BARE_HANDS
 	
-	var is_sickle = "sickle" in args.tool.data.item_tags
+	var is_sickle = args.tool.data.is_sickle()
 	return InteractionType.BEST_TOOL if is_sickle else InteractionType.NONE
 
 func interact(_action: InteractionAction):
