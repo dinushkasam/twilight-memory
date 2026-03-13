@@ -16,9 +16,9 @@ enum InteractionType {
 class InteractionArgs:
 	var coords: Vector2i
 	var actor: Node2D
-	var tool: Tool
+	var tool: Item
 	
-	func _init(coords_arg: Vector2i, actor_arg: Node2D, tool_arg: Tool):
+	func _init(coords_arg: Vector2i, actor_arg: Node2D, tool_arg: Item):
 		self.coords = coords_arg
 		self.actor = actor_arg
 		self.tool = tool_arg

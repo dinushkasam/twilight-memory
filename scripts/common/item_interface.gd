@@ -1,5 +1,5 @@
 extends Resource
-class_name Item
+class_name ItemData
 
 @export var item_name: String
 @export var animation: String

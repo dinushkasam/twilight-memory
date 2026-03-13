@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://ck6g8fuxnk4dc"]
 
+[ext_resource type="Script" uid="uid://cd4adbfwojnpt" path="res://scripts/game_objects/item.gd" id="1_43aun"]
 [ext_resource type="Texture2D" uid="uid://217gne2oa6n7" path="res://assets/sprites/tiles/tools/items.png" id="1_wptra"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_43aun"]
@@ -30,6 +31,7 @@ animations = [{
 }]
 
 [node name="Item" type="Node2D" unique_id=1580737009]
+script = ExtResource("1_43aun")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1492672425]
 texture_filter = 1

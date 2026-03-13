@@ -1,4 +1,4 @@
-extends Item
+extends ItemData
 class_name ToolData
 
 

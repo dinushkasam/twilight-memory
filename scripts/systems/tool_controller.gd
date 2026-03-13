@@ -1,24 +1,19 @@
 extends Node
 class_name ToolController
 
-# Tool display
-@export var animation_player: AnimationPlayer
-@export var tool_sprite: AnimatedSprite2D
 
-# Configs
-var configs: ConfigProvider
-
-@export var tools: Array[Item]
+@export var tools: Array[ItemData]
 var max_tools: int = 10
 
 # Active variables
 var active_index = 0
-var active_tool: Tool
+var active_tool: Item
 
 # Signals
-signal tool_changed(tool: Item, index: int)
-signal tool_added(tool: Item, index: int)
-signal tool_removed(tool: Item, index: int)
+signal tool_changed(tool: ItemData, index: int)
+signal tool_added(tool: ItemData, index: int)
+signal tool_removed(tool: ItemData, index: int)
+signal tool_cleared()
 
 
 func init():
@@ -27,7 +22,6 @@ func init():
 
 func _ready() -> void:
 	equip_tool(active_index)
-	animation_player.play("tool_idle")
 
 
 func equip_tool(index: int):
@@ -40,17 +34,13 @@ func equip_tool(index: int):
 		active_tool = new_tool_data.item_scene.instantiate()
 		active_tool.data = new_tool_data
 		
-		# Tool sprite
-		tool_sprite.scale = Vector2(1,1)
-		tool_sprite.play(active_tool.data.animation)
-		
 		add_child(active_tool)
 	
 		print("Equipped slot [", index, "] tool: ", new_tool_data.item_name)
+		tool_changed.emit(new_tool_data, index)
 	else:
 		print("Equipped slot [", index, "] tool: none")
-		tool_sprite.scale = Vector2(0,0)
-	tool_changed.emit(new_tool_data, index)
+		tool_cleared.emit()
 
 func cycle_next():
 	active_index = (active_index + 1) % max_tools
@@ -66,12 +56,12 @@ func is_tool_equipped() -> bool:
 func use_tool(actor: Player, target_tile: Vector2i):
 	active_tool.use(actor, target_tile)
 
-func add_tool(tool: ToolData, index: int):
+func add_tool(tool: ItemData, index: int):
 	if index < max_tools:
 		tools[index] = tool
 		tool_added.emit(tool, index)
 
-func remove_tool(tool: ToolData, index: int):
+func remove_tool(tool: ItemData, index: int):
 	if index < max_tools:
 		tools[index] = null
 		tool_removed.emit(tool, index)
